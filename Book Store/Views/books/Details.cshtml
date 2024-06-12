@@ -1,113 +1,80 @@
 ﻿@model Book_Store.Models.book
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewBag.Title = "Chi tiết sách";
 }
+<style>
+    .book-info p {
+        font-size: 16px;
+    }
 
-<h2>Details</h2>
+    h3 {
+        color: white;
+        width: 100%;
+        background-color: #36a189;
+        padding: 10px;
+        text-align: left;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+    .btns {
+        text-align: center;
+        padding-left: 250px;
+    }
+</style>
+
+<h3>Thông tin sách</h3>
 
 <div>
-    <h4>book</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.author.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.author.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.category.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.category.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.image)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.image)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.publish_company)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.publish_company)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.publish_year)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.publish_year)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.price)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.price)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.sold)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.sold)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.remain)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.remain)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.is_deleted)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.is_deleted)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.created_at)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.created_at)
-        </dd>
-
-    </dl>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="book-image col-5">
+                <img class="card-img-top product-image-detail w-75" src="@Url.Content("~/Content/Image/" + Model.image)" alt="Product Image" />
+            </div>
+            <div class="book-info col-5">
+                <div class="book-name" style="font-weight: bold; font-size: 36px;">
+                    @Html.DisplayFor(model => model.name)
+                </div>
+                <div class="book-category">
+                    <p>Thể loại: @Html.DisplayFor(model => model.category.name)</p>
+                </div>
+                <div class="book-author">
+                    <p>Tác giả: @Html.DisplayFor(model => model.author.name)</p>
+                </div>
+                <div class="book-descrip">
+                    <p>Mô tả: @Html.DisplayFor(model => model.description)</p>
+                </div>
+                <div class="book-pushCom">
+                    <p>Nhà xuất bản: @Html.DisplayFor(model => model.publish_company)</p>
+                </div>
+                <div class="book-pushYear">
+                    <p>Năm phát hành: @Html.DisplayFor(model => model.publish_year)</p>
+                </div>
+                <div class="book-price">
+                    <p>Giá: @Html.DisplayFor(model => model.price)</p>
+                </div>
+                <div class="book-sold">
+                    <p>Đã bán: @Html.DisplayFor(model => model.sold)</p>
+                </div>
+                <div class="book-remain">
+                    <p>Còn lại: @Html.DisplayFor(model => model.remain)</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="card-text">Số lượng:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="quantity" name="quantity" type="number" class="form-control" aria-label="Quantity" value="1" min="1" max="@Model.remain">
+                    </div>
+                </div>
+            </div>
+            <div class="btns mt-3">
+                <button type="submit" class="btn btn-primary me-5" id="addToCartButton">Thêm</button> <!-- Added the class here -->
+                <button type="submit" class="btn btn-success ms-5" id="buyNowButton">Mua hàng</button>
+            </div>
+        </div>
+    </div>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.book_id }) |

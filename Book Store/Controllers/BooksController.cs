@@ -15,9 +15,20 @@ namespace Book_Store.Controllers
         private BookStoreDB db = new BookStoreDB();
 
         // GET: books
-        public ActionResult Index()
+        public ActionResult Index(decimal? minPrice, decimal? maxPrice)
         {
             var books = db.books.Include(b => b.author).Include(b => b.category);
+
+            if (minPrice.HasValue)
+            {
+                books = books.Where(b => b.price >= minPrice.Value);
+            }
+
+            if (maxPrice.HasValue)
+            {
+                books = books.Where(b => b.price <= maxPrice.Value);
+            }
+
             return View(books.ToList());
         }
 

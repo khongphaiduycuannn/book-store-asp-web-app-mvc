@@ -81,3 +81,90 @@ C:\Users\pc\Desktop\Book Store\obj\Debug\Book Store.csproj.CoreCompileInputs.cac
 C:\Users\pc\Desktop\Book Store\obj\Debug\Book Store.csproj.CopyComplete
 C:\Users\pc\Desktop\Book Store\obj\Debug\Book Store.dll
 C:\Users\pc\Desktop\Book Store\obj\Debug\Book Store.pdb
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\Book Store.dll.config
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\Book Store.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\Book Store.pdb
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\Antlr3.Runtime.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\EntityFramework.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\EntityFramework.SqlServer.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\Microsoft.Web.Infrastructure.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\Newtonsoft.Json.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.Helpers.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.Mvc.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.Optimization.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.Razor.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.WebPages.Deployment.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.WebPages.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.WebPages.Razor.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\WebGrease.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\EntityFramework.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\EntityFramework.SqlServer.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.Helpers.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.Mvc.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.Optimization.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.Razor.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.WebPages.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.WebPages.Deployment.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\System.Web.WebPages.Razor.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\Newtonsoft.Json.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\Antlr3.Runtime.pdb
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\obj\Debug\Book Store.csproj.AssemblyReference.cache
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\obj\Debug\Book Store.csproj.CoreCompileInputs.cache
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\obj\Debug\Book Store.csproj.CopyComplete
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\obj\Debug\Book Store.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\obj\Debug\Book Store.pdb
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\csc.exe
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\csc.exe.config
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\csc.rsp
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\csi.exe
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\csi.exe.config
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\csi.rsp
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.CodeAnalysis.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.CSharp.Core.targets
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.Managed.Core.targets
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.VisualBasic.Core.targets
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\Microsoft.Win32.Primitives.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.AppContext.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Collections.Immutable.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Console.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Diagnostics.DiagnosticSource.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Diagnostics.FileVersionInfo.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Diagnostics.StackTrace.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Globalization.Calendars.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.IO.Compression.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.IO.Compression.ZipFile.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.IO.FileSystem.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.IO.FileSystem.Primitives.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Net.Http.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Net.Sockets.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Reflection.Metadata.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Runtime.InteropServices.RuntimeInformation.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Security.Cryptography.Algorithms.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Security.Cryptography.Encoding.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Security.Cryptography.Primitives.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Security.Cryptography.X509Certificates.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Text.Encoding.CodePages.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Threading.Tasks.Extensions.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.ValueTuple.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Xml.ReaderWriter.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Xml.XmlDocument.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Xml.XPath.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\System.Xml.XPath.XDocument.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\vbc.exe
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\vbc.exe.config
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\vbc.rsp
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\VBCSCompiler.exe
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\roslyn\VBCSCompiler.exe.config
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\PagedList.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\PagedList.Mvc.dll
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\PagedList.xml
+D:\Tai lieu\PTUDTMDT\book-store-asp-web-app-mvc\Book Store\bin\PagedList.Mvc.xml

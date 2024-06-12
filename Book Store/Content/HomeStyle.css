@@ -1,0 +1,88 @@
+﻿* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.search-box {
+    display: flex;
+    align-items: center;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    padding: 5px 10px;
+    width: 200px;
+}
+
+    .search-box input {
+        border: none;
+        outline: none;
+        flex: 1;
+        font-size: 14px;
+    }
+
+        .search-box input::placeholder {
+            color: #aaa;
+        }
+
+    .search-box button {
+        background: none;
+        border: none;
+        outline: none;
+        cursor: pointer;
+    }
+
+        .search-box button img {
+            width: 16px;
+            height: 16px;
+        }
+
+.logo-img {
+    background-color: #1d5167;
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 34px auto;
+    border-radius: 4px;
+    float: left;
+    margin-left: 50px;
+    padding: 3px 15px 0 15px;
+    width: 70px;
+}
+
+.main-footer {
+    background-color: #333;
+    color: #fff;
+    padding: 5px;
+    text-align: center;
+    width: 100%;
+}
+
+    .main-footer div {
+        display: inline-block;
+        margin-right: 40px;
+        margin-bottom: 5px;
+    }
+
+    .main-footer a {
+        color: #fff;
+        text-decoration: none;
+        margin: 0 20px;
+    }
+
+#backToTop {
+    display: none; /* Ẩn nút mặc định */
+    position: fixed; /* Cố định vị trí nút */
+    bottom: 20px; /* Vị trí từ dưới lên */
+    right: 20px; /* Vị trí từ bên phải */
+    width: 40px;
+    z-index: 99; /* Đảm bảo nút nằm trên các thành phần khác */
+    border: none; /* Không viền */
+    background-color: #4CAF50; /* Màu nền */
+    color: white; /* Màu chữ */
+    cursor: pointer; /* Con trỏ chuột khi di chuyển qua nút */
+    padding: 8px; /* Đệm trong nút */
+    border-radius: 25px;
+}
+
+    #backToTop:hover {
+        background-color: #555; /* Màu nền khi di chuột qua nút */
+    }
