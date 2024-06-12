@@ -1,0 +1,102 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Workspace\\PTUDTMDT\\BookStoreAdmin\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{09F62E32-6420-4774-94AC-0BE2FBACE33E}|BookStoreAdmin\\BookStoreAdmin.csproj|d:\\workspace\\ptudtmdt\\bookstoreadmin\\bookstoreadmin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{09F62E32-6420-4774-94AC-0BE2FBACE33E}|BookStoreAdmin\\BookStoreAdmin.csproj|solutionrelative:bookstoreadmin\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09F62E32-6420-4774-94AC-0BE2FBACE33E}|BookStoreAdmin\\BookStoreAdmin.csproj|d:\\workspace\\ptudtmdt\\bookstoreadmin\\bookstoreadmin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09F62E32-6420-4774-94AC-0BE2FBACE33E}|BookStoreAdmin\\BookStoreAdmin.csproj|solutionrelative:bookstoreadmin\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09F62E32-6420-4774-94AC-0BE2FBACE33E}|BookStoreAdmin\\BookStoreAdmin.csproj|d:\\workspace\\ptudtmdt\\bookstoreadmin\\bookstoreadmin\\models\\bookstoredb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{09F62E32-6420-4774-94AC-0BE2FBACE33E}|BookStoreAdmin\\BookStoreAdmin.csproj|solutionrelative:bookstoreadmin\\models\\bookstoredb.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{09F62E32-6420-4774-94AC-0BE2FBACE33E}|BookStoreAdmin\\BookStoreAdmin.csproj|d:\\workspace\\ptudtmdt\\bookstoreadmin\\bookstoreadmin\\views\\shared\\_admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{09F62E32-6420-4774-94AC-0BE2FBACE33E}|BookStoreAdmin\\BookStoreAdmin.csproj|solutionrelative:bookstoreadmin\\views\\shared\\_admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 710,
+          "SelectedChildIndex": 1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\BookStoreAdmin\\BookStoreAdmin\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "BookStoreAdmin\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\Workspace\\PTUDTMDT\\BookStoreAdmin\\BookStoreAdmin\\Views\\Home\\Index.cshtml*",
+              "RelativeToolTip": "BookStoreAdmin\\Views\\Home\\Index.cshtml*",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-12T13:45:45.992Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\BookStoreAdmin\\BookStoreAdmin\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "BookStoreAdmin\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\Workspace\\PTUDTMDT\\BookStoreAdmin\\BookStoreAdmin\\Controllers\\HomeController.cs*",
+              "RelativeToolTip": "BookStoreAdmin\\Controllers\\HomeController.cs*",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABEAAAAYAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-12T13:45:15.912Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "BookStoreDB.cs",
+              "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\BookStoreAdmin\\BookStoreAdmin\\Models\\BookStoreDB.cs",
+              "RelativeDocumentMoniker": "BookStoreAdmin\\Models\\BookStoreDB.cs",
+              "ToolTip": "D:\\Workspace\\PTUDTMDT\\BookStoreAdmin\\BookStoreAdmin\\Models\\BookStoreDB.cs",
+              "RelativeToolTip": "BookStoreAdmin\\Models\\BookStoreDB.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAcAAAAkAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-06-12T13:44:59.777Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "_Admin.cshtml",
+              "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\BookStoreAdmin\\BookStoreAdmin\\Views\\Shared\\_Admin.cshtml",
+              "RelativeDocumentMoniker": "BookStoreAdmin\\Views\\Shared\\_Admin.cshtml",
+              "ToolTip": "D:\\Workspace\\PTUDTMDT\\BookStoreAdmin\\BookStoreAdmin\\Views\\Shared\\_Admin.cshtml",
+              "RelativeToolTip": "BookStoreAdmin\\Views\\Shared\\_Admin.cshtml",
+              "ViewState": "AQIAAAMAAAAAAAAAAAAAABIAAAAeAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-12T13:42:57.72Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 989,
+          "SelectedChildIndex": -1,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

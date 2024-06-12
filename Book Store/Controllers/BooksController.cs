@@ -17,7 +17,9 @@ namespace Book_Store.Controllers
         // GET: books
         public ActionResult Index()
         {
+          
             var books = db.books.Include(b => b.author).Include(b => b.category);
+            var revenue = db.books.Sum(x => x.price * x.sold);
             return View(books.ToList());
         }
 
