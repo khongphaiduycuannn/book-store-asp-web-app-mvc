@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using Book_Store.Models;
+using PagedList;
 
 namespace Book_Store.Controllers
 {
@@ -15,7 +16,7 @@ namespace Book_Store.Controllers
         private BookStoreDB db = new BookStoreDB();
 
         // GET: books
-        public ActionResult Index(decimal? minPrice, decimal? maxPrice)
+        public ActionResult Index(decimal? minPrice, decimal? maxPrice, int? page)
         {
             var books = db.books.Include(b => b.author).Include(b => b.category);
 
@@ -29,7 +30,10 @@ namespace Book_Store.Controllers
                 books = books.Where(b => b.price <= maxPrice.Value);
             }
 
-            return View(books.ToList());
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+
+            return View(books.OrderBy(b => b.book_id).ToPagedList(pageNumber, pageSize));
         }
 
         // GET: books/Details/5
@@ -142,6 +146,22 @@ namespace Book_Store.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        // GET: books/TopSelling
+        public ActionResult TopSelling()
+        {
+            var topSellingBooks = db.books.Include(b => b.author).Include(b => b.category)
+                .OrderByDescending(b => b.sold).Take(5).ToList();
+            return View(topSellingBooks);
+        }
+
+        // GET: books/NewArrivals
+        public ActionResult NewArrivals()
+        {
+            var newArrivals = db.books.Include(b => b.author).Include(b => b.category)
+                .OrderByDescending(b => b.publish_year).Take(5).ToList();
+            return View(newArrivals);
         }
     }
 }

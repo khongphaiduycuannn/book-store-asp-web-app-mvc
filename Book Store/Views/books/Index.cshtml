@@ -1,4 +1,6 @@
-﻿@model IEnumerable<Book_Store.Models.book>
+﻿@model PagedList.IPagedList<Book_Store.Models.book>
+@using PagedList.Mvc;
+
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -54,6 +56,15 @@
             </div>
         </div>
     }
+</div>
+
+<div class="pagination-container">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new
+    {
+        page,
+        minPrice = Request.QueryString["minPrice"],
+        maxPrice = Request.QueryString["maxPrice"]
+    }), PagedListRenderOptions.Classic)
 </div>
 
 <style>
@@ -135,5 +146,28 @@
         .btns .btn {
             width: 45%;
             margin: 5px;
+        }
+
+    .pagination-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .pagination-container .pagination {
+            justify-content: center;
+        }
+
+        .pagination-container .page-item {
+            margin: 0 5px;
+        }
+
+        .pagination-container .page-link {
+            color: #007bff;
+        }
+
+        .pagination-container .active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
         }
 </style>
