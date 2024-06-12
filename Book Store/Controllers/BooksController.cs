@@ -10,7 +10,7 @@ using Book_Store.Models;
 
 namespace Book_Store.Controllers
 {
-    public class BooksController : Controller
+    public class booksController : Controller
     {
         private BookStoreDB db = new BookStoreDB();
 
