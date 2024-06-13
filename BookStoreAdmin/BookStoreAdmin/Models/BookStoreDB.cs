@@ -41,6 +41,10 @@ namespace BookStoreAdmin.Models
                 .WillCascadeOnDelete(false);
 
             modelBuilder.Entity<order>()
+                .Property(e => e.shipping_fee)
+                .HasPrecision(18, 0);
+
+            modelBuilder.Entity<order>()
                 .HasMany(e => e.order_book)
                 .WithRequired(e => e.order)
                 .WillCascadeOnDelete(false);

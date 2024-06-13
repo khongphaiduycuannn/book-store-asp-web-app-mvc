@@ -202,3 +202,7 @@ E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.Mvc.dll
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.xml
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.Mvc.xml
+D:\Workspace\PTUDTMDT\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.dll
+D:\Workspace\PTUDTMDT\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.Mvc.dll
+D:\Workspace\PTUDTMDT\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.xml
+D:\Workspace\PTUDTMDT\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.Mvc.xml
