@@ -1,18 +1,113 @@
-﻿using System;
+﻿using BookStoreAdmin.Models;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
-using BookStoreAdmin.Models;
 
 namespace BookStoreAdmin.Controllers
 {
+
+    public class OrderStatistics
+    {
+        public DateTime? Date { get; set; }
+        public String titleShow { get; set; }
+        public int OrderCount { get; set; }
+    }
+
     public class ordersController : Controller
     {
         private BookStoreDB db = new BookStoreDB();
+
+
+        public ActionResult Statistics(string filterType)
+        {
+            List<OrderStatistics> statistics;
+
+            switch (filterType)
+            {
+                case "month":
+                    statistics = GetOrderStatisticsByMonth();
+                    foreach (var item in statistics)
+                    {
+                        item.titleShow = string.Format("{0:MM/yyyy}", item.Date);
+                    }
+                    break;
+                case "year":
+                    statistics = GetOrderStatisticsByYear();
+                    foreach (var item in statistics)
+                    {
+                        item.titleShow = string.Format("{0:yyyy}", item.Date);
+                    }
+                    break;
+                default:
+                    statistics = GetOrderStatisticsByDay();
+                    foreach (var item in statistics)
+                    {
+                        item.titleShow = string.Format("{0:dd/MM/yyyy}", item.Date);
+                    }
+                    break;
+            }
+
+            ViewBag.FilterType = filterType;
+
+            return View(statistics);
+        }
+
+        private List<OrderStatistics> GetOrderStatisticsByDay()
+        {
+            var query = from o in db.orders
+                        group o by DbFunctions.TruncateTime(o.created_at) into g
+                        select new OrderStatistics
+                        {
+                            Date = g.Key,
+                            OrderCount = g.Count()
+                        };
+
+            return query.ToList();
+        }
+
+        private List<OrderStatistics> GetOrderStatisticsByMonth()
+        {
+            var query = from o in db.orders
+                        group o by new { o.created_at.Value.Year, o.created_at.Value.Month } into g
+                        select new
+                        {
+                            Year = g.Key.Year,
+                            Month = g.Key.Month,
+                            OrderCount = g.Count()
+                        };
+
+            var result = query.ToList().Select(x => new OrderStatistics
+            {
+                Date = new DateTime(x.Year, x.Month, 1),
+                OrderCount = x.OrderCount
+            }).ToList();
+
+            return result;
+        }
+
+        private List<OrderStatistics> GetOrderStatisticsByYear()
+        {
+            var query = from o in db.orders
+                        group o by o.created_at.Value.Year into g
+                        select new
+                        {
+                            Year = g.Key,
+                            OrderCount = g.Count()
+                        };
+
+            var result = query.ToList().Select(x => new OrderStatistics
+            {
+                Date = new DateTime(x.Year, 1, 1),
+                OrderCount = x.OrderCount
+            }).ToList();
+
+            return result;
+        }
 
         // GET: orders
         public ActionResult Index()

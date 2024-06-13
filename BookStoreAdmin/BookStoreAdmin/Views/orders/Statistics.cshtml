@@ -1,0 +1,42 @@
+﻿@model List<BookStoreAdmin.Controllers.OrderStatistics>
+
+@{
+    ViewBag.Title = "Statistics";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    var filterType = Request.QueryString["filterType"];
+}
+
+<h2>Statistics</h2>
+
+<h2>Order Statistics</h2>
+
+<form action="@Url.Action("Statistics", "orders")" method="get">
+    <label for="filterType">Chọn loại lọc:</label>
+    <select id="filterType" name="filterType">
+        <option value="day">Theo ngày</option>
+        <option value="month">Theo tháng</option>
+        <option value="year">Theo năm</option>
+    </select>
+    <button type="submit">Xem Thống Kê</button>
+</form>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Ngày</th>
+            <th>Số lượng đơn hàng</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var stat in Model)
+        {
+            <tr>
+                <td>
+                   @stat.titleShow
+
+                </td>
+                <td>@stat.OrderCount</td>
+            </tr>
+        }
+    </tbody>
+</table>

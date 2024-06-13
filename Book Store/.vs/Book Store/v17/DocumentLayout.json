@@ -3,27 +3,35 @@
   "WorkspaceRootPath": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|solutionrelative:controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|d:\\workspace\\ptudtmdt\\book-store-asp-web-app-mvc\\book store\\views\\shared\\_admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|solutionrelative:views\\shared\\_admin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|d:\\workspace\\ptudtmdt\\book-store-asp-web-app-mvc\\book store\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|d:\\workspace\\ptudtmdt\\book-store-asp-web-app-mvc\\book store\\views\\books\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|solutionrelative:views\\books\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|d:\\workspace\\ptudtmdt\\book-store-asp-web-app-mvc\\book store\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|d:\\workspace\\ptudtmdt\\book-store-asp-web-app-mvc\\book store\\controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|solutionrelative:controllers\\bookscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|solutionrelative:views\\books\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|d:\\workspace\\ptudtmdt\\book-store-asp-web-app-mvc\\book store\\views\\books\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\views\\books\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|solutionrelative:views\\books\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|d:\\workspace\\ptudtmdt\\book-store-asp-web-app-mvc\\book store\\views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D32AA986-F672-453F-BA15-0A36F1057DED}|Book Store.csproj|solutionrelative:views\\books\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
@@ -34,7 +42,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 210,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Bookmark",
@@ -50,7 +58,33 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 1,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Views\\books\\Create.cshtml",
+              "RelativeDocumentMoniker": "Views\\books\\Create.cshtml",
+              "ToolTip": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Views\\books\\Create.cshtml",
+              "RelativeToolTip": "Views\\books\\Create.cshtml",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-13T06:16:52.794Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "_Admin.cshtml",
+              "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Views\\Shared\\_Admin.cshtml",
+              "RelativeDocumentMoniker": "Views\\Shared\\_Admin.cshtml",
+              "ToolTip": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Views\\Shared\\_Admin.cshtml",
+              "RelativeToolTip": "Views\\Shared\\_Admin.cshtml",
+              "ViewState": "AQIAABgAAAAAAAAAAAAYwH8AAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-06-13T05:04:55.541Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
               "Title": "Details.cshtml",
               "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Views\\books\\Details.cshtml",
               "RelativeDocumentMoniker": "Views\\books\\Details.cshtml",
@@ -58,12 +92,11 @@
               "RelativeToolTip": "Views\\books\\Details.cshtml",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-12T15:58:15.663Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-12T15:58:15.663Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "Index.cshtml",
               "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Views\\books\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\books\\Index.cshtml",
@@ -71,12 +104,11 @@
               "RelativeToolTip": "Views\\books\\Index.cshtml",
               "ViewState": "AQIAAE4AAAAAAAAAAAAAAF4AAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-12T15:55:34.691Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-12T15:55:34.691Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 6,
               "Title": "Delete.cshtml",
               "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Views\\books\\Delete.cshtml",
               "RelativeDocumentMoniker": "Views\\books\\Delete.cshtml",
@@ -84,8 +116,7 @@
               "RelativeToolTip": "Views\\books\\Delete.cshtml",
               "ViewState": "AQIAAF0AAAAAAAAAAIBZwHUAAAAxAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-06-12T15:55:23.367Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-06-12T15:55:23.367Z"
             },
             {
               "$type": "Document",
@@ -95,33 +126,33 @@
               "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
               "ToolTip": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Views\\Home\\Index.cshtml",
               "RelativeToolTip": "Views\\Home\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAAAKAAAA",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABMAAAAqAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-06-12T13:35:52.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "booksController.cs",
               "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Controllers\\booksController.cs",
               "RelativeDocumentMoniker": "Controllers\\booksController.cs",
               "ToolTip": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Controllers\\booksController.cs",
               "RelativeToolTip": "Controllers\\booksController.cs",
-              "ViewState": "AQIAAAYAAAAAAAAAAAAuwAwAAAARAAAA",
+              "ViewState": "AQIAABcAAAAAAAAAAAAAwAwAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-12T13:34:12.524Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 3,
               "Title": "HomeController.cs",
               "DocumentMoniker": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Controllers\\HomeController.cs",
               "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
               "ToolTip": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Controllers\\HomeController.cs",
               "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAAwAoAAAARAAAA",
+              "ViewState": "AQIAAA4AAAAAAAAAAAAcwCMAAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-06-12T08:44:35.047Z",
               "EditorCaption": ""
