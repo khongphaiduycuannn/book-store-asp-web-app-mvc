@@ -202,6 +202,7 @@ E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.Mvc.dll
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.xml
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.Mvc.xml
+<<<<<<< HEAD
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\roslyn\csc.exe
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\roslyn\csc.exe.config
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\roslyn\csc.rsp
@@ -251,3 +252,9 @@ E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\roslyn\vbc.rsp
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\roslyn\VBCSCompiler.exe
 E:\WS\ASP\Book-store-udtmdtv2\BTL_PTUD\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\roslyn\VBCSCompiler.exe.config
+=======
+D:\Workspace\PTUDTMDT\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.dll
+D:\Workspace\PTUDTMDT\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.Mvc.dll
+D:\Workspace\PTUDTMDT\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.xml
+D:\Workspace\PTUDTMDT\book-store-asp-web-app-mvc\BookStoreAdmin\BookStoreAdmin\bin\PagedList.Mvc.xml
+>>>>>>> 6349b8b86ad80b43e86fe068372ae451bfea66c4
