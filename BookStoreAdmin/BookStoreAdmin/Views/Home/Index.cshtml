@@ -2,6 +2,7 @@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Admin.cshtml";
+    List<BookStoreAdmin.Models.account> listAccount = ViewBag.listAdmin;
 }
 
 <div class="page-header">
@@ -96,8 +97,8 @@
             <div class="card-body">
                 <div class="dash-widget-header">
                     <div>
-                        <h3 class="card_widget_header">364</h3>
-                        <h6 class="text-muted">Lượng truy cập</h6>
+                        <h3 class="card_widget_header">@ViewBag.cntCart</h3>
+                        <h6 class="text-muted">Số đơn hàng</h6>
                     </div>
                     <div class="ml-auto mt-md-3 mt-lg-0">
                         <span class="opacity-7 text-muted">
@@ -118,260 +119,104 @@
     </div>
 </div>
 <div class="row">
-    <div class="col-md-12 col-lg-6">
-        <div class="card card-chart">
-            <div class="card-header">
-                <h4 class="card-title">DOANH THU ($)</h4>
-            </div>
-            <div class="card-body">
-                <div id="line-chart"></div>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-12 col-lg-6">
-        <div class="card card-chart">
-            <div class="card-header">
-                <h4 class="card-title">SỐ LƯỢNG PHÒNG ĐƯỢC ĐẶT</h4>
-            </div>
-            <div class="card-body">
-                <div id="donut-chart"></div>
-            </div>
-        </div>
-    </div>
-</div>
-<div class="row">
     <div class="col-md-12 d-flex">
         <div class="card card-table flex-fill">
             <div class="card-header">
-                <h4 class="card-title float-left mt-2">Quản lý khách sạn</h4>
+                <h4 class="card-title float-left mt-2">Quản lý</h4>
                 <button type="button" class="btn btn-primary float-right veiwbutton"
                         data-bs-toggle="modal" data-bs-target="#exampleModal" data-toggle="modal"
                         data-target="#create">
                     Thêm mới
                 </button>
-
-                <!-- Them moi -->
-                <div class="modal" id="create">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <!-- Modal Header -->
-                            <div class="modal-header">
-                                <h4 class="modal-title">CREATE</h4>
-                                <button type="button" class="close"
-                                        data-dismiss="modal">
-                                    &times;
-                                </button>
-                            </div>
-
-                            <!-- Modal body -->
-                            <div class="modal-body">
-                                <form action="#" class="was-validated">
-                                    <div class="form-group">
-                                        <label for="uname">Name:</label>
-                                        <input type="text" class="form-control" id="cname"
-                                               placeholder="Enter username" name="uname" required>
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Please fill out this field.</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="uname">Owner:</label>
-                                        <input type="text" class="form-control" id="cowner"
-                                               placeholder="Enter owner" name="uname" required>
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Please fill out this field.</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="uname">Number:</label>
-                                        <input type="text" class="form-control" id="cnumber"
-                                               placeholder="Enter number" name="cnumber" required>
-                                        <div class="valid-feedback">Valid.</div>
-                                        <div class="invalid-feedback">Please fill out this field.</div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="uname">Status:</label>
-                                        <select class="form-select p-1 border-0"
-                                                aria-label="Default select example">
-                                            <option value="active" selected>Active</option>
-                                            <option value="inactive" class="p-1">Inactive</option>
-                                        </select>
-
-                                    </div>
-
-
-                                </form>
-                            </div>
-
-                            <!-- Modal footer -->
-                            <div class="modal-footer">
-                                <button id="btnCreate" type="submit" class="btn btn-primary"
-                                        data-dismiss="modal">
-                                    Submit
-                                </button>
-                                <button type="button" class="btn btn-danger"
-                                        data-dismiss="modal">
-                                    Close
-                                </button>
-                            </div>
-
-                        </div>
-                    </div>
-                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
                     <table id="table" class="table table-hover table-center">
                         <thead>
                             <tr>
-                                <th>Mã khách sạn</th>
-                                <th>Tên khách sạn</th>
-                                <th>Chủ sở hữu</th>
-                                <th>Số điện thoại</th>
-                                <th class="text-center">Địa chỉ</th>
+                                <th>Mã tài khoản</th>
+                                <th>Tên quản lý</th>
+                                <th>Email</th>
+                                <th>Ngày tạo tài khoản</th>
                                 <th>Hành động</th>
                             </tr>
                         </thead>
                         <tbody id="tbody">
-                            <tr id="HT-0001">
-                                <td class="text-nowrap">
-                                    <div>HT-0001</div>
-                                </td>
-                                <td class="text-nowrap">Hotel 1</td>
-                                <td>
-                                    Đỗ Tiến Anh
-                                </td>
+                            @foreach (var item in listAccount)
+                            {
+                                <tr>
+                                    <td>@item.account_id</td>
+                                    <td>@item.username</td>
+                                    <td>@item.email</td>
+                                    <td>@item.created_at</td>
+                                    <td>
+                                        <a class="btn btn-success" href=""><strong>Sửa</strong></a>
+                                        <strong>|</strong>
+                                        <button class="btn btn-danger delete-button" data-id="@item.account_id">Delete</button>
+                                    </td>
 
-                                <td>
-                                    <div>631-254-6480</div>
-                                </td>
-                                <td class="text-center">
-                                    Hà Nội
-                                </td>
-                                <td>
-                                    <a href=""><strong>Sửa |</strong></a>
-                                    <a href="" data-toggle="modal"
-                                       data-target="#deleteModal"><strong>Xóa</strong></a>
-                                </td>
-                            </tr>
-                            <tr id="HT-0002">
-                                <td class="text-nowrap">
-                                    <div>HT-0002</div>
-                                </td>
-                                <td class="text-nowrap">Hotel 2</td>
-                                <td>
-                                    Hoàng Quốc Chiến
-                                </td>
-
-                                <td>
-                                    <div>830-468-1042</div>
-                                </td>
-                                <td class="text-center">
-                                    Hà Nội
-                                </td>
-                                <td>
-                                    <a href=""><strong>Sửa |</strong></a>
-                                    <a href="" data-toggle="modal"
-                                       data-target="#deleteModal"><strong>Xóa</strong></a>
-                                </td>
-                            </tr>
-                            <tr id="HT-0003">
-                                <td class="text-nowrap">
-                                    <div>HT-0003</div>
-                                </td>
-                                <td class="text-nowrap">Hotel 3</td>
-                                <td>
-                                    Nguyễn Mạnh Cường
-                                </td>
-
-                                <td>
-                                    <div>508-335-5531</div>
-                                </td>
-                                <td class="text-center">
-                                    Hà Nội
-                                </td>
-                                <td>
-                                    <a href=""><strong>Sửa |</strong></a>
-                                    <a href="" data-toggle="modal"
-                                       data-target="#deleteModal"><strong>Xóa</strong></a>
-                                </td>
-                            </tr>
-                            <tr id="HT-0004">
-                                <td class="text-nowrap">
-                                    <div>HT-0004</div>
-                                </td>
-                                <td class="text-nowrap">Hotel 4</td>
-                                <td>
-                                    Nguyễn Văn A
-                                </td>
-
-                                <td>
-                                    <div>262-260-1170</div>
-                                </td>
-                                <td class="text-center">
-                                    Hải Phòng
-                                </td>
-                                <td>
-                                    <a href=""><strong>Sửa |</strong></a>
-                                    <a href="" data-toggle="modal"
-                                       data-target="#deleteModal"><strong>Xóa</strong></a>
-                                </td>
-                            </tr>
-                            <tr id="HT-0005">
-                                <td class="text-nowrap">
-                                    <div>HT-0005</div>
-                                </td>
-                                <td class="text-nowrap">Hotel 5</td>
-                                <td>
-                                    Nguyễn Văn B
-                                </td>
-                                <td>
-                                    <div>570-458-0070</div>
-                                </td>
-                                <td class="text-center">
-                                    Đà Nẵng
-                                </td>
-                                <td>
-                                    <a href=""><strong>Sửa |</strong></a>
-                                    <a href="" data-toggle="modal"
-                                       data-target="#deleteModal"><strong>Xóa</strong></a>
-                                </td>
-                            </tr>
+                                </tr>
+                            }
                         </tbody>
+
                     </table>
-                    <div class="modal" id="deleteModal">
+                    <div id="deleteModal" class="modal">
                         <div class="modal-dialog">
                             <div class="modal-content">
-
-                                <!-- Modal Header -->
                                 <div class="modal-header">
-                                    <h4 class="modal-title">DELETE</h4>
-                                    <button type="button" class="close"
-                                            data-dismiss="modal">
-                                        &times;
-                                    </button>
+                                    <h5 class="modal-title">Delete Confirmation</h5>
+                                    <button id="cancelButton" type="button" class="close" data-dismiss="modal">&times;</button>
                                 </div>
-
-                                <!-- Modal body -->
                                 <div class="modal-body">
-                                    Bạn có chắc muốn xóa chứ ?
+                                    Are you sure you want to delete this account?
                                 </div>
-
-                                <!-- Modal footer -->
                                 <div class="modal-footer">
-                                    <button id="delete" type="button" class="btn btn-danger"
-                                            data-dismiss="modal">
-                                        Xóa
-                                    </button>
-                                    <button type="button" class="btn btn-secondary"
-                                            data-dismiss="modal">
-                                        Close
-                                    </button>
+                                    <button id="cancelButton1" type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                    <button id="confirmDeleteButton" type="button" class="btn btn-danger delete-button" >Delete</button>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+
+<script src="~/assets/js/jquery-3.5.1.min.js"></script>
+<script>
+    $(document).ready(function() {
+        $('.delete-button').click(function() {
+            var accountId = $(this).data('id');
+            $('#confirmDeleteButton').data('id', accountId);
+            $('#deleteModal').modal('show');
+        });
+
+        $('#cancelButton').click(function () {
+            $('#deleteModal').modal('hide');
+        });
+
+        $('#cancelButton1').click(function () {
+            $('#deleteModal').modal('hide');
+        });
+
+        $('#confirmDeleteButton').click(function() {
+            var accountId = $(this).data('id');
+            console.log(accountId);
+            $.post('@Url.Action("Delete", "Home")', { accountId: accountId })
+                .done(function(data) {
+                    // Nếu xóa thành công, cập nhật giao diện người dùng
+                    alert('Success');
+                    window.location.reload();
+                })
+                .fail(function() {
+                    alert('Failed to delete account.');
+                })
+                .always(function() {
+                    $('#deleteModal').modal('hide');
+                });
+        });
+    });
+</script>
+

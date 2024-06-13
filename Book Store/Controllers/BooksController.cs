@@ -112,7 +112,7 @@ namespace Book_Store.Controllers
             {
                 return HttpNotFound();
             }
-            return View(book);
+            return RedirectToAction("Index");
         }
 
         // POST: books/Delete/5
