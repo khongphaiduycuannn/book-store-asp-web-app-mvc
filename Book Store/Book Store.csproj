@@ -143,6 +143,7 @@
     <Compile Include="Models\account.cs" />
     <Compile Include="Models\author.cs" />
     <Compile Include="Models\book.cs" />
+    <Compile Include="Models\BookDetailsViewModel.cs" />
     <Compile Include="Models\BookStoreDB.cs" />
     <Compile Include="Models\cart.cs" />
     <Compile Include="Models\cart_book.cs" />

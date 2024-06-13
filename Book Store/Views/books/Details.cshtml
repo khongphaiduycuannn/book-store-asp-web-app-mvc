@@ -1,15 +1,91 @@
-﻿@model Book_Store.Models.book
+﻿@model Book_Store.Models.BookDetailsViewModel
 
 @{
     ViewBag.Title = "Chi tiết sách";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
 }
+
+<h3 style="color: white;">Thông tin sách</h3>
+
+<div>
+    <div class="container mt-2">
+        <div class="row">
+            <div class="book-image col-5">
+                <img class="card-img-top product-image-detail w-75" src="@Url.Content("~/Content/Image/" + @Model.Book.image)" alt="Product Image" style="border-radius: 10px;"/>
+            </div>
+            <div class="book-info col-5">
+                <div class="book-name" style="font-weight: bold; font-size: 36px;">
+                    @Model.Book.name
+                </div>
+                <div class="book-category">
+                    <p>Thể loại: @Model.Book.category.name</p>
+                </div>
+                <div class="book-author">
+                    <p>Tác giả: @Model.Book.author.name</p>
+                </div>
+                <div class="book-descrip">
+                    <p>Mô tả: @Model.Book.description</p>
+                </div>
+                <div class="book-pushCom">
+                    <p>Nhà xuất bản: @Model.Book.publish_company)</p>
+                </div>
+                <div class="book-pushYear">
+                    <p>Năm phát hành: @Model.Book.publish_year)</p>
+                </div>
+                <div class="book-price">
+                    <p>Giá: @Model.Book.price)</p>
+                </div>
+                <div class="book-sold">
+                    <p>Đã bán: @Model.Book.sold)</p>
+                </div>
+                <div class="book-remain">
+                    <p>Còn lại: @Model.Book.remain)</p>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p class="card-text">Số lượng:</p>
+                    </div>
+                    <div class="col-md-8">
+                        <input id="quantity" name="quantity" type="number" class="form-control" aria-label="Quantity" value="1" min="1" max="@Model.Book.remain">
+                    </div>
+                </div>
+            </div>
+            <div class="btns mt-3">
+                <button type="submit" class="btn btn-primary me-5" id="addToCartButton">Thêm</button> <!-- Added the class here -->
+                <button type="submit" class="btn btn-success ms-5" id="buyNowButton">Mua hàng</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="mt-3">
+    <h3 style="color: white;">Related Books</h3>
+    <div class="related-list">
+        @foreach (var relatedBook in Model.RelatedBooks)
+        {
+            <div class="related-card">
+                <img class="related-img-top" src="@Url.Content("~/Content/Image/" + relatedBook.image)" alt="@relatedBook.name" style="max-width: 100%; height: 300px; border-radius: 10px;">
+                <div class="related-body">
+                    <h5 class="card-title">@relatedBook.name</h5>
+                    <p class="card-text">Price: @relatedBook.price</p>
+                    <a href="@Url.Action("Details", new { id = relatedBook.book_id })" class="btn btn-primary">View Details</a>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Book.book_id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
+
 <style>
     .book-info p {
         font-size: 16px;
     }
 
     h3 {
-        color: white;
+        margin-top: 5px;
         width: 100%;
         background-color: #36a189;
         padding: 10px;
@@ -22,61 +98,50 @@
         text-align: center;
         padding-left: 250px;
     }
+
+    .related-list {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 20px;
+    }
+
+    .related-card {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+        text-align: center;
+    }
+
+        .related-card:hover {
+            transform: translateY(-10px);
+        }
+
+    .related-img-top {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+/*        .related-img-top img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }*/
+
+    .related-body {
+        text-align: center;
+    }
+
+    .card-title {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .card-text {
+        margin: 5px 0;
+    }
 </style>
-
-<h3>Thông tin sách</h3>
-
-<div>
-    <div class="container mt-2">
-        <div class="row">
-            <div class="book-image col-5">
-                <img class="card-img-top product-image-detail w-75" src="@Url.Content("~/Content/Image/" + Model.image)" alt="Product Image" />
-            </div>
-            <div class="book-info col-5">
-                <div class="book-name" style="font-weight: bold; font-size: 36px;">
-                    @Html.DisplayFor(model => model.name)
-                </div>
-                <div class="book-category">
-                    <p>Thể loại: @Html.DisplayFor(model => model.category.name)</p>
-                </div>
-                <div class="book-author">
-                    <p>Tác giả: @Html.DisplayFor(model => model.author.name)</p>
-                </div>
-                <div class="book-descrip">
-                    <p>Mô tả: @Html.DisplayFor(model => model.description)</p>
-                </div>
-                <div class="book-pushCom">
-                    <p>Nhà xuất bản: @Html.DisplayFor(model => model.publish_company)</p>
-                </div>
-                <div class="book-pushYear">
-                    <p>Năm phát hành: @Html.DisplayFor(model => model.publish_year)</p>
-                </div>
-                <div class="book-price">
-                    <p>Giá: @Html.DisplayFor(model => model.price)</p>
-                </div>
-                <div class="book-sold">
-                    <p>Đã bán: @Html.DisplayFor(model => model.sold)</p>
-                </div>
-                <div class="book-remain">
-                    <p>Còn lại: @Html.DisplayFor(model => model.remain)</p>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <p class="card-text">Số lượng:</p>
-                    </div>
-                    <div class="col-md-8">
-                        <input id="quantity" name="quantity" type="number" class="form-control" aria-label="Quantity" value="1" min="1" max="@Model.remain">
-                    </div>
-                </div>
-            </div>
-            <div class="btns mt-3">
-                <button type="submit" class="btn btn-primary me-5" id="addToCartButton">Thêm</button> <!-- Added the class here -->
-                <button type="submit" class="btn btn-success ms-5" id="buyNowButton">Mua hàng</button>
-            </div>
-        </div>
-    </div>
-</div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.book_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

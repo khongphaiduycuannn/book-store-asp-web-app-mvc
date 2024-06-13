@@ -43,12 +43,26 @@ namespace Book_Store.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            book book = db.books.Find(id);
+            book book = db.books.Include(b => b.author).Include(b => b.category).FirstOrDefault(b => b.book_id == id);
             if (book == null)
             {
                 return HttpNotFound();
             }
-            return View(book);
+
+            // Lấy danh sách sách cùng thể loại
+            var relatedBooks = db.books
+                                 .Where(b => b.category_id == book.category_id && b.book_id != id)
+                                 .Take(5) // Lấy 5 sách cùng thể loại
+                                 .ToList();
+
+            // Tạo ViewModel để truyền dữ liệu cho View
+            var viewModel = new BookDetailsViewModel
+            {
+                Book = book,
+                RelatedBooks = relatedBooks
+            };
+
+            return View(viewModel);
         }
 
         // GET: books/Create
