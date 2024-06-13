@@ -57,6 +57,12 @@ namespace BookStoreAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (account.role != "Admin" && account.role != "Client")
+                {
+                    ModelState.AddModelError("role", "Vui lòng chọn vai trò là 'Admin' hoặc 'Client'.");
+                    return View(account);
+                }
+                account.created_at = DateTime.Now;
                 db.accounts.Add(account);
                 db.SaveChanges();
                 return RedirectToAction("Index");
