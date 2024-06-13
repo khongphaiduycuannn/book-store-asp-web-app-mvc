@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -55,8 +56,22 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "account_id,username,email,password,role")] account account)
         {
+            bool isExist = IsEmailExists(account.email);
+
+
+            Debug.WriteLine(isExist);
+
+            if (IsEmailExists(account.email))
+            {
+                ModelState.AddModelError("email", "Email đã tồn tại.");
+                return View(account);
+            }
+
             if (ModelState.IsValid)
             {
+
+
+
                 if (account.role != "Admin" && account.role != "Client")
                 {
                     ModelState.AddModelError("role", "Vui lòng chọn vai trò là 'Admin' hoặc 'Client'.");
@@ -69,6 +84,11 @@ namespace BookStoreAdmin.Controllers
             }
 
             return View(account);
+        }
+
+        private bool IsEmailExists(string email)
+        {
+            return db.accounts.FirstOrDefault(x=> x.email == email) != null;
         }
 
         // GET: accounts/Edit/5

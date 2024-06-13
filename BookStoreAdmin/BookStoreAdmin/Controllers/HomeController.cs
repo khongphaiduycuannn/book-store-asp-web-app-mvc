@@ -1,9 +1,11 @@
 ﻿using BookStoreAdmin.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.UI;
 
 namespace BookStoreAdmin.Controllers
 {
@@ -13,12 +15,14 @@ namespace BookStoreAdmin.Controllers
 
         List<account> listAdmin = new List<account>();
 
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
             var sold = db.books.Sum(x => x.sold);
             var revenue = db.books.Sum(x => x.price * x.sold);
             var remain = db.books.Sum(x => x.remain);
-            var cntCart = db.cart_book.Count();
+
+            // Số lượng đơn hàng
+            var cntCart = db.orders.Count();
 
             listAdmin = db.accounts.Where(x => x.role.ToLower() == "admin").ToList();
 
@@ -29,8 +33,17 @@ namespace BookStoreAdmin.Controllers
             ViewBag.cntCart = cntCart;
             ViewBag.listAdmin = listAdmin;
 
-            return View();
-        }
+            int pageSize = 5; // Số lượng item trên mỗi trang
+            int pageNumber = (page ?? 1); // Trang hiện tại, mặc định là 1
+
+            var accounts = db.accounts.Where(x => x.role.ToLower() == "admin")
+                                 .OrderBy(b => b.account_id) // Sắp xếp theo book_id hoặc bất kỳ cột nào khác
+                                 .ToPagedList(pageNumber, pageSize);
+
+            return View(accounts);
+        } 
+        
+        
 
         public ActionResult Delete(int accountId)
         {
