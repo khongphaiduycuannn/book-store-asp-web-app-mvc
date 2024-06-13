@@ -16,6 +16,7 @@ namespace BookStoreAdmin.Controllers
         public DateTime? Date { get; set; }
         public String titleShow { get; set; }
         public int OrderCount { get; set; }
+        public decimal OrderTotal { get; set; }
     }
 
     public class ordersController : Controller
@@ -35,6 +36,7 @@ namespace BookStoreAdmin.Controllers
                     {
                         item.titleShow = string.Format("{0:MM/yyyy}", item.Date);
                     }
+                    ViewBag.theader = "Tháng";
                     break;
                 case "year":
                     statistics = GetOrderStatisticsByYear();
@@ -42,6 +44,7 @@ namespace BookStoreAdmin.Controllers
                     {
                         item.titleShow = string.Format("{0:yyyy}", item.Date);
                     }
+                    ViewBag.theader = "Năm";
                     break;
                 default:
                     statistics = GetOrderStatisticsByDay();
@@ -49,6 +52,7 @@ namespace BookStoreAdmin.Controllers
                     {
                         item.titleShow = string.Format("{0:dd/MM/yyyy}", item.Date);
                     }
+                    ViewBag.theader = "Ngày";
                     break;
             }
 
@@ -64,7 +68,8 @@ namespace BookStoreAdmin.Controllers
                         select new OrderStatistics
                         {
                             Date = g.Key,
-                            OrderCount = g.Count()
+                            OrderCount = g.Count(),
+                            OrderTotal = g.Sum(x => (decimal?)x.order_book.Sum(ob => ob.total_amount) ?? decimal.Zero) + g.Sum(x => x.shipping_fee)
                         };
 
             return query.ToList();
@@ -78,13 +83,16 @@ namespace BookStoreAdmin.Controllers
                         {
                             Year = g.Key.Year,
                             Month = g.Key.Month,
-                            OrderCount = g.Count()
+                            OrderCount = g.Count(),
+                            TotalRevenue = g.Sum(x => (decimal?)x.order_book.Sum(ob => ob.total_amount) ?? decimal.Zero) + g.Sum(x => x.shipping_fee)
                         };
 
             var result = query.ToList().Select(x => new OrderStatistics
             {
                 Date = new DateTime(x.Year, x.Month, 1),
-                OrderCount = x.OrderCount
+                OrderCount = x.OrderCount,
+                OrderTotal = x.TotalRevenue,
+
             }).ToList();
 
             return result;
@@ -97,13 +105,16 @@ namespace BookStoreAdmin.Controllers
                         select new
                         {
                             Year = g.Key,
-                            OrderCount = g.Count()
+                            OrderCount = g.Count(),
+                            TotalRevenue = g.Sum(x => (decimal?)x.order_book.Sum(ob => ob.total_amount) ?? decimal.Zero) + g.Sum(x => x.shipping_fee)
                         };
 
             var result = query.ToList().Select(x => new OrderStatistics
             {
                 Date = new DateTime(x.Year, 1, 1),
-                OrderCount = x.OrderCount
+                OrderCount = x.OrderCount,
+                OrderTotal = x.TotalRevenue,
+
             }).ToList();
 
             return result;

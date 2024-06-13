@@ -53,7 +53,7 @@ namespace BookStoreAdmin.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "account_id,username,email,password,role,created_at")] account account)
+        public ActionResult Create([Bind(Include = "account_id,username,email,password,role")] account account)
         {
             if (ModelState.IsValid)
             {
