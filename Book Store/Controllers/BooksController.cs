@@ -33,6 +33,8 @@ namespace Book_Store.Controllers
             int pageSize = 8;
             int pageNumber = (page ?? 1);
 
+            ViewBag.Category = db.categories;
+
             return View(books.OrderBy(b => b.book_id).ToPagedList(pageNumber, pageSize));
         }
 
@@ -61,6 +63,8 @@ namespace Book_Store.Controllers
                 Book = book,
                 RelatedBooks = relatedBooks
             };
+
+            ViewBag.Category = db.categories;
 
             return View(viewModel);
         }
@@ -167,6 +171,9 @@ namespace Book_Store.Controllers
         {
             var topSellingBooks = db.books.Include(b => b.author).Include(b => b.category)
                 .OrderByDescending(b => b.sold).Take(5).ToList();
+
+            ViewBag.Category = db.categories;
+
             return View(topSellingBooks);
         }
 
@@ -175,7 +182,34 @@ namespace Book_Store.Controllers
         {
             var newArrivals = db.books.Include(b => b.author).Include(b => b.category)
                 .OrderByDescending(b => b.publish_year).Take(5).ToList();
+
+            ViewBag.Category = db.categories;
+
             return View(newArrivals);
+        }
+
+        public ActionResult SearchByName(string searchName)
+        {
+            var searchedList = db.books.Where(b => b.name.Contains(searchName));
+            if (searchedList.Count() == 0)
+            {
+                return RedirectToAction("Index");
+            }
+
+            ViewBag.Category = db.categories;
+
+            return View(searchedList);
+        }
+
+        public ActionResult Category(int category_id)
+        {
+            var books = db.books.Where(b => b.category_id == category_id);
+            ViewBag.CategoryName = db.categories.Where(c => c.category_id == category_id).First().name;
+            int y = books.Count();
+            Console.WriteLine(y);
+            ViewBag.Category = db.categories;
+
+            return View(books);
         }
     }
 }

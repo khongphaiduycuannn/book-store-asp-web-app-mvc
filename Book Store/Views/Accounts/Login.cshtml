@@ -1,0 +1,37 @@
+﻿@model Book_Store.Models.ErrorMessage
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Đăng nhập</title>
+</head>
+<body>
+    <div>
+        @using (Html.BeginForm("Login", "Accounts", FormMethod.Post))
+        {
+        <div>
+            <div>
+                <label>Email: </label>
+                <input type="text" class="form-control" name="email" />
+            </div>
+            <div>
+                <label>Mật khẩu: </label>
+                <input type="text" class="form-control" name="password" />
+            </div>
+            @if (Model != null)
+            {
+                <a>@Model.Message</a>
+            }
+            <button type="submit">Đăng nhập</button>
+        </div>
+        }
+        <button type="button"><a href="@Url.Action("Register", "Accounts")">Đăng ký</a></button>
+    </div>
+</body>
+</html>

@@ -1,0 +1,124 @@
+﻿@model IEnumerable<Book_Store.Models.book>
+
+@{
+    ViewBag.Title = "SearchByName";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="color: white;">Searched List</h3>
+
+<div class="book-list">
+    @foreach (var item in Model)
+    {
+        <div class="book-content">
+            <a href="@Url.Action("Details", "Books", new { id = item.book_id })">
+                <div class="book-image">
+                    <img class="card-img-top product-image-detail" src="@Url.Content("~/Content/Image/" + item.image)" alt="Product Image" />
+                </div>
+                <div class="book-info">
+                    <div class="book-name">
+                        @Html.DisplayFor(modelItem => item.name)
+                    </div>
+                    <div class="book-author">
+                        <p>Tác giả: @Html.DisplayFor(modelItem => item.author.name)</p>
+                    </div>
+                    <div class="book-category">
+                        <p>Thể loại: @Html.DisplayFor(modelItem => item.category.name)</p>
+                    </div>
+                    <div class="book-price">
+                        <p>Giá: @Html.DisplayFor(modelItem => item.price)</p>
+                    </div>
+                    <div class="book-sold">
+                        <p>Đã bán: @Html.DisplayFor(modelItem => item.sold)</p>
+                    </div>
+                </div>
+            </a>
+            <div class="btns">
+                <button type="submit" class="btn btn-primary" id="addToCartButton">Mua hàng</button>
+            </div>
+        </div>
+    }
+</div>
+
+<style>
+    h3 {
+        width: 100%;
+        color: white;
+        background-color: #36a189;
+        padding: 10px;
+        text-align: left;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+    .filter-form {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+        .filter-form label {
+            font-weight: bold;
+        }
+
+    .book-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .book-content {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+
+        .book-content:hover {
+            transform: translateY(-10px);
+        }
+
+        .book-content a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+    .book-image {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+        .book-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+    .book-info {
+        text-align: left;
+    }
+
+    .book-name {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .book-info p {
+        margin: 5px 0;
+    }
+
+    .btns {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+        .btns .btn {
+            width: 45%;
+            margin: 5px;
+        }
+</style>
