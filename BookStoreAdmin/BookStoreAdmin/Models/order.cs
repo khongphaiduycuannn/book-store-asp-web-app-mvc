@@ -22,6 +22,25 @@ namespace BookStoreAdmin.Models
 
         public DateTime? created_at { get; set; }
 
+        public string address { get; set; }
+        public string phone_number { get; set; }
+        public decimal shipping_fee { get; set; }
+        public string status { get; set; }
+        [NotMapped]
+        public decimal total_bill
+        {
+            get
+            {
+                decimal monney = 0;
+                foreach (var item in order_book)
+                {
+                    monney += (decimal)item.total_amount;
+                }
+                return monney + shipping_fee;
+            }
+        }
+
+
         public virtual account account { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

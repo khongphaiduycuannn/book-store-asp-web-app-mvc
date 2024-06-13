@@ -1,0 +1,67 @@
+﻿@model BookStoreAdmin.Models.book
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2 class="mb-4">Details</h2>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h4 class="card-title">@Html.DisplayFor(model => model.name)</h4>
+    </div>
+    <div class="card-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="~/assets/img/product/@Model.image" alt="@Model.name" class="img-fluid" />
+            </div>
+            <div class="col-md-8">
+                <dl class="row">
+                    <dt class="col-sm-4">Tên Tác Giả</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.author.name)</dd>
+
+                    <dt class="col-sm-4">Danh Mục</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.category.name)</dd>
+
+                    <dt class="col-sm-4">Mô tả</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.description)</dd>
+
+                    <dt class="col-sm-4">Nhà Phát Hành</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.publish_company)</dd>
+
+                    <dt class="col-sm-4">Năm Phát Hành</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.publish_year)</dd>
+
+                    <dt class="col-sm-4">Giá</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.price)</dd>
+
+                    <dt class="col-sm-4">Đã Bán</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.sold)</dd>
+
+                    <dt class="col-sm-4">Còn Lại</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.remain)</dd>
+
+                    <dt class="col-sm-4">Trạng Thái</dt>
+                    <dd class="col-sm-8">
+                        @if (Model.is_deleted == 1)
+                        {
+                            <span class="text-danger">Đã xóa</span>
+                        }
+                        else
+                        {
+                            <span class="text-success">Còn</span>
+                        }
+                    </dd>
+
+                    <dt class="col-sm-4">Ngày Tạo</dt>
+                    <dd class="col-sm-8">@Html.DisplayFor(model => model.created_at)</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="card-footer text-right">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.book_id }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>

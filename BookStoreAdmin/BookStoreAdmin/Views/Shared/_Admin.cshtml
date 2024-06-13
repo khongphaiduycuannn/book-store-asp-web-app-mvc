@@ -1,4 +1,9 @@
-﻿<!DOCTYPE html>
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
 
 <html>
 <head>
@@ -13,16 +18,48 @@
     <link rel="stylesheet" href="~/assets/plugins/morris/morris.css">
     <link rel="stylesheet" type="text/css" href="~/assets/css/bootstrap-datetimepicker.min.css">
     <link rel="stylesheet" href="~/assets/css/style.css">
+    <style>
+        <style >
+        .pagination {
+            display: flex;
+            justify-content: center;
+            padding: 0;
+            list-style: none;
+        }
 
-    @Scripts.Render("~/bundles/modernizr")
+        .pagination li {
+            display: inline;
+        }
+
+        .pagination a, .pagination span {
+            color: #007bff;
+            padding: 0.5rem 0.75rem;
+            margin-left: -1px;
+            border: 1px solid #dee2e6;
+            text-decoration: none;
+            background-color: #fff;
+        }
+
+            .pagination a:hover:not(.active) {
+                background-color: #ddd;
+            }
+
+        .pagination .active a, .pagination .active span {
+            background-color: #007bff;
+            color: white;
+            border-color: #007bff;
+        }
+    </style>
+
+    </style>
 </head>
 
 <body>
     <div class="main-wrapper">
         <div class="header">
             <div class="header-left">
-                <a href="~/Home/Index" class="logo"> <img src="~/assets/img/logo.png" width="50" height="70" alt="logo"> <span class="logoclass">Nhà sách</span> </a>
-                <a href="~/Home/Index" class="logo logo-small"> <img src="~/assets/img/logo.png" alt="Logo" width="30" height="30"> </a>
+                <a href="~/books/Create" class="logo"> <img src="~/assets/img/hotel_logo.png" width="50" height="70" alt="logo"> <span class="logoclass">HOTEL</span> </a>
+                <a href="~/books//Index" class="logo logo-small"> <img src="~/assets/img/hotel_logo.png" alt="Logo" width="30" height="30"> </a>
             </div>
             <a href="javascript:void(0);" id="toggle_btn"> <i class="fe fe-text-align-left"></i> </a>
             <a class="mobile_btn" id="mobile_btn"> <i class="fas fa-bars"></i> </a>
@@ -126,7 +163,7 @@
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
-                        <li> <a href="~/Home/Index"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
+                        <li> <a href="~/books//Index"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
                         <li class="list-divider"></li>
                         <li class="submenu">
                             <a href="#"><i class="fas fa-suitcase"></i> <span> Booking </span> <span class="menu-arrow"></span></a>
@@ -298,9 +335,12 @@
     <script src="~/assets/plugins/raphael/raphael.min.js"></script>
     <script src="~/assets/js/bootstrap-datetimepicker.min.js"></script>
     <script src="~/assets/js/script.js"></script>
-
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)
+    <script>
+	$(function() {
+		$('#datetimepicker3').datetimepicker({
+			format: 'LT'
+		});
+	});
+    </script>
 </body>
 </html>
