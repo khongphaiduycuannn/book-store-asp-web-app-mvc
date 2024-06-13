@@ -1,0 +1,51 @@
+﻿@model IEnumerable<BookStoreAdmin.Models.order>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>ID</th>
+        <th>Người Dùng</th>
+        <th>Địa Chỉ</th>
+        <th>Số điện thoại</th>
+        <th>Ngày Tạo</th>
+        <th>Tổng Tiền</th>
+        <th>Phí Vận Chuyển</th>
+        <th>Trạng Thái</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(modelItem => item.order_id)</td>
+            <td>@Html.DisplayFor(modelItem => item.account.username)</td>
+            <td>@Html.DisplayFor(modelItem => item.address)</td>
+            <td>@Html.DisplayFor(modelItem => item.phone_number)</td>
+            <td>@Html.DisplayFor(modelItem => item.created_at)</td>
+            <td>@Html.DisplayFor(modelItem => item.total_bill)</td>
+            <td>@Html.DisplayFor(modelItem => item.shipping_fee)</td>
+            <td>@Html.DisplayFor(modelItem => item.status)</td>
+            <td class="text-right">
+                <div class="dropdown dropdown-action">
+                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                        <i class="fas fa-ellipsis-v ellipse_color"></i>
+                    </a>
+                    <div class="dropdown-menu dropdown-menu-right">
+                        @Html.ActionLink("Details", "Details", new { id = item.order_id }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Sửa", "Edit", new { id = item.order_id }, new { @class = "dropdown-item" })
+                        @Html.ActionLink("Xóa", "Delete", new { id = item.order_id }, new { @class = "dropdown-item" })
+                    </div>
+                </div>
+            </td>
+        </tr>
+    }
+</table>

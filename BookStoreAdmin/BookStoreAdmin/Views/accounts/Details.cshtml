@@ -1,0 +1,36 @@
+﻿@model BookStoreAdmin.Models.account
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2 class="mb-4">Details</h2>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h4 class="card-title">@Html.DisplayFor(model => model.username)</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.username)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.username)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.email)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.email)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.password)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.password)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.role)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.role)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.created_at)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.created_at)</dd>
+        </dl>
+    </div>
+    <div class="card-footer text-right">
+        @Html.ActionLink("Edit", "Edit", new { id = Model.account_id }, new { @class = "btn btn-warning" })
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+    </div>
+</div>

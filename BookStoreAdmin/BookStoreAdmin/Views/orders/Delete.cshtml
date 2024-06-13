@@ -1,58 +1,56 @@
-﻿@model BookStoreAdmin.Models.book
+﻿@model BookStoreAdmin.Models.order
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Xóa Order";
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
 <h2 class="text-danger"></h2>
 
 <div class="alert alert-warning" role="alert">
-    <h3>Bạn có chắc chắn muốn xóa ?</h3>
+    <h3>Bạn có chắc chắn muốn xóa?</h3>
 </div>
 
 <div class="card">
     <div class="card-header bg-danger text-white">
-        <h4>Chi Tiết Sách</h4>
+        <h4>Chi Tiết Order</h4>
     </div>
     <div class="card-body">
         <dl class="row">
             <dt class="col-sm-3">
-               Tác Giả
+                Tên Người Dùng
             </dt>
             <dd class="col-sm-9">
-                @Html.DisplayFor(model => model.author.name)
+                @Html.DisplayFor(model => model.account.username)
             </dd>
 
             <dt class="col-sm-3">
-                Danh Mục
+                Ngày Tạo
             </dt>
             <dd class="col-sm-9">
-                @Html.DisplayFor(model => model.category.name)
+                @Html.DisplayFor(model => model.created_at)
             </dd>
 
             <dt class="col-sm-3">
-                Tên Sách
+                Địa Chỉ
             </dt>
             <dd class="col-sm-9">
-                @Html.DisplayFor(model => model.name)
+                @Html.DisplayFor(model => model.address)
             </dd>
 
             <dt class="col-sm-3">
-                Bìa Sách
+                Số Điện Thoại
             </dt>
             <dd class="col-sm-9">
-                <img src="~/assets/img/product/@(Model.image)" alt="@Model.name" width="100px" height="70px" class="rounded" />
+                @Html.DisplayFor(model => model.phone_number)
             </dd>
 
             <dt class="col-sm-3">
-                Mô Tả
+                Trạng Thái
             </dt>
             <dd class="col-sm-9">
-                @Html.DisplayFor(model => model.description)
+                @Html.DisplayFor(model => model.status)
             </dd>
-
-            
         </dl>
     </div>
     <div class="card-footer text-center">
