@@ -203,12 +203,27 @@ namespace Book_Store.Controllers
 
         public ActionResult Category(int category_id)
         {
-            var books = db.books.Where(b => b.category_id == category_id);
-            ViewBag.CategoryName = db.categories.Where(c => c.category_id == category_id).First().name;
-            int y = books.Count();
-            Console.WriteLine(y);
-            ViewBag.Category = db.categories;
+            var books = db.books.Where(b => b.category_id == category_id).ToList();
 
+            // Set the CategoryName in ViewBag if the category exists
+            var category = db.categories.FirstOrDefault(c => c.category_id == category_id);
+            if (category != null)
+            {
+                ViewBag.CategoryName = category.name;
+            }
+            else
+            {
+                ViewBag.CategoryName = "Unknown Category";
+            }
+
+            // Count the books in the specified category
+            int bookCount = books.Count();
+            Console.WriteLine(bookCount);
+
+            // Set the categories in ViewBag
+            ViewBag.Category = db.categories.ToList();
+
+            // Return the view with the list of books
             return View(books);
         }
     }
