@@ -5,7 +5,13 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2 class="mb-4">Details</h2>
+<div class="page-header mt-5">
+    <div class="row">
+        <div class="col">
+            <h3 class="page-title">Thông tin sách</h3>
+        </div>
+    </div>
+</div>
 
 <div class="card mb-4">
     <div class="card-header">
@@ -18,31 +24,31 @@
             </div>
             <div class="col-md-8">
                 <dl class="row">
-                    <dt class="col-sm-4">Tên Tác Giả</dt>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.author.name)</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.author.name)</dd>
 
-                    <dt class="col-sm-4">Danh Mục</dt>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.category.name)</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.category.name)</dd>
 
-                    <dt class="col-sm-4">Mô tả</dt>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.description)</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.description)</dd>
 
-                    <dt class="col-sm-4">Nhà Phát Hành</dt>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.publish_company)</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.publish_company)</dd>
 
-                    <dt class="col-sm-4">Năm Phát Hành</dt>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.publish_year)</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.publish_year)</dd>
 
-                    <dt class="col-sm-4">Giá</dt>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.price)</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.price)</dd>
 
-                    <dt class="col-sm-4">Đã Bán</dt>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.sold)</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.sold)</dd>
 
-                    <dt class="col-sm-4">Còn Lại</dt>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.remain)</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.remain)</dd>
 
-                    <dt class="col-sm-4">Trạng Thái</dt>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.is_deleted)</dt>
                     <dd class="col-sm-8">
                         @if (Model.is_deleted == 1)
                         {
@@ -54,7 +60,7 @@
                         }
                     </dd>
 
-                    <dt class="col-sm-4">Ngày Tạo</dt>
+                    <dt class="col-sm-4">@Html.DisplayNameFor(model => model.created_at)</dt>
                     <dd class="col-sm-8">@Html.DisplayFor(model => model.created_at)</dd>
                 </dl>
             </div>

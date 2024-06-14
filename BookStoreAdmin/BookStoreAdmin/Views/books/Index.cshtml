@@ -6,10 +6,18 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2 class="mb-4">Danh sách sách</h2>
+
+<div class="page-header mt-5">
+    <div class="row">
+        <div class="col">
+            <h3 class="page-title">Tất cả sách</h3>
+        </div>
+    </div>
+</div>
+
 <div>
     <p>
-        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary mb-3" })
+        @Html.ActionLink("Tạo mới", "Create", null, new { @class = "btn btn-primary mb-3" })
     </p>
 </div>
 
@@ -19,15 +27,15 @@
             <table class="table table-stripped table-hover table-center mb-0">
                 <thead>
                     <tr>
-                        <th>Mã Sách</th>
-                        <th>Tên Tác Giả</th>
-                        <th>Danh Mục</th>
-                        <th>Tên Sách</th>
-                        <th>Bìa Sách</th>
-                        <th>Nhà Phát Hành</th>
+                        <th>Mã sách</th>
+                        <th>Tên tác giả</th>
+                        <th>Danh mục</th>
+                        <th>Tên sách</th>
+                        <th>Bìa sách</th>
+                        <th>Nhà phát hành</th>
                         <th>Giá</th>
                         <th>Đã bán</th>
-                        <th>Còn Lại</th>
+                        <th>Còn lại</th>
                         <th>Đã bị xóa</th>
                         <th>Ngày tạo sách</th>
                     </tr>
@@ -64,7 +72,7 @@
                                         <i class="fas fa-ellipsis-v ellipse_color"></i>
                                     </a>
                                     <div class="dropdown-menu dropdown-menu-right">
-                                        @Html.ActionLink("Details", "Details", new { id = item.book_id }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Chi tiết", "Details", new { id = item.book_id }, new { @class = "dropdown-item" })
                                         @Html.ActionLink("Sửa", "Edit", new { id = item.book_id }, new { @class = "dropdown-item" })
                                         @Html.ActionLink("Xóa", "Delete", new { id = item.book_id }, new { @class = "dropdown-item" })
                                     </div>
