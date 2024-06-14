@@ -6,7 +6,16 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2 class="mb-4">Danh sách tài khoản</h2>
+
+
+<div class="page-header mt-5">
+    <div class="row">
+        <div class="col">
+            <h3 class="page-title">Danh sách tài khoản</h3>
+        </div>
+    </div>
+</div>
+
 <div>
     <p>
         @Html.ActionLink("Tạo Mới", "Create", null, new { @class = "btn btn-primary mb-3" })

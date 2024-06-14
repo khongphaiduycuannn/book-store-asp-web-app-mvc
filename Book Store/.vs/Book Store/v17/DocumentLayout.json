@@ -77,7 +77,7 @@
               "RelativeDocumentMoniker": "Views\\Shared\\_Admin.cshtml",
               "ToolTip": "D:\\Workspace\\PTUDTMDT\\book-store-asp-web-app-mvc\\Book Store\\Views\\Shared\\_Admin.cshtml",
               "RelativeToolTip": "Views\\Shared\\_Admin.cshtml",
-              "ViewState": "AQIAABgAAAAAAAAAAAAYwH8AAAAAAAAA",
+              "ViewState": "AQIAAB0AAAAAAAAAAAAAAH8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-06-13T05:04:55.541Z",
               "EditorCaption": ""
@@ -166,6 +166,10 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{34e76e81-ee4a-11d0-ae2e-00a0c90fffc3}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
             }
           ]
         }

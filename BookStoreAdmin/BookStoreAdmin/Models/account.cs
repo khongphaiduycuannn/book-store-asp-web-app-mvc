@@ -21,22 +21,27 @@
         public int account_id { get; set; }
 
         [StringLength(255)]
+        [DisplayName("Tên nguời dùng")]
         [Required(ErrorMessage = "Tên người dùng là trường bắt buộc.")]
         public string username { get; set; }
 
         [StringLength(255)]
+        [DisplayName("Email")]
         [Required(ErrorMessage = "Email là trường bắt buộc.")]
         [EmailAddress(ErrorMessage = "Địa chỉ Email không hợp lệ.")]
         public string email { get; set; }
 
         [StringLength(255)]
+        [DisplayName("Mật khẩu")]
         [Required(ErrorMessage = "Mật khẩu là trường bắt buộc.")]
         public string password { get; set; }
 
         [StringLength(255)]
 
+        [DisplayName("Vai trò")]
         public string role { get; set; }
 
+        [DisplayName("Ngày tạo")]
         public DateTime? created_at { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

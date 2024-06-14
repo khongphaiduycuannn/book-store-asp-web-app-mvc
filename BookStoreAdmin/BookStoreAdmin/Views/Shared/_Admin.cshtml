@@ -1,6 +1,8 @@
 ﻿
 @{
     Layout = null;
+    var controller = ViewContext.RouteData.Values["controller"].ToString();
+    var action = ViewContext.RouteData.Values["action"].ToString();
 }
 
 <!DOCTYPE html>
@@ -22,6 +24,7 @@
         a {
             text-decoration: none;
         }
+
         .pagination {
             display: flex;
             justify-content: center;
@@ -29,28 +32,28 @@
             list-style: none;
         }
 
-        .pagination li {
-            display: inline;
-        }
-
-        .pagination a, .pagination span {
-            color: #007bff;
-            padding: 0.5rem 0.75rem;
-            margin-left: -1px;
-            border: 1px solid #dee2e6;
-            text-decoration: none;
-            background-color: #fff;
-        }
-
-            .pagination a:hover:not(.active) {
-                background-color: #ddd;
+            .pagination li {
+                display: inline;
             }
 
-        .pagination .active a, .pagination .active span {
-            background-color: #007bff;
-            color: white;
-            border-color: #007bff;
-        }
+            .pagination a, .pagination span {
+                color: #007bff;
+                padding: 0.5rem 0.75rem;
+                margin-left: -1px;
+                border: 1px solid #dee2e6;
+                text-decoration: none;
+                background-color: #fff;
+            }
+
+                .pagination a:hover:not(.active) {
+                    background-color: #ddd;
+                }
+
+            .pagination .active a, .pagination .active span {
+                background-color: #007bff;
+                color: white;
+                border-color: #007bff;
+            }
     </style>
 </head>
 
@@ -163,39 +166,39 @@
             <div class="sidebar-inner slimscroll">
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
-                        <li> <a class="active" href="~/Home//Index"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
+                        <li class="@(controller == "Home" && action == "Index" ? "active" : "")"> <a href="~/Home//Index"><i class="fas fa-tachometer-alt"></i> <span>Dashboard</span></a> </li>
                         <li class="list-divider"></li>
                         <li class="submenu">
-                            <a href="#"><i class="fas fa-book"></i> <span>Sách</span> <span class="menu-arrow"></span></a>
+                            <a class="@(controller == "books" ? "active" : "")" href="#"><i class="fas fa-book"></i> <span>Sách</span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="~/books/Index">Danh sách</a></li>
-                                <li><a href="~/books/Create">Thêm sách</a></li>
+                                <li><a class="@(controller == "books" && action == "Index" ? "active" : "")" href="~/books/Index">Danh sách</a></li>
+                                <li><a class="@(controller == "books" && action == "Create" ? "active" : "")" href="~/books/Create">Thêm sách</a></li>
                             </ul>
                         </li>
                         <li class="submenu">
-                            <a href="#"><i class="fas fa-user"></i> <span> Quản lý Tài khoản </span> <span class="menu-arrow"></span></a>
+                            <a class="@(controller == "accounts" ? "active" : "")" href="#" href="#"><i class="fas fa-user"></i> <span> Quản lý Tài khoản </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="~/accounts/Index"> Danh sách tài khoản </a></li>
-                                <li><a href="~/accounts/Create"> Thêm tài khoản </a></li>
+                                <li><a class="@(controller == "accounts" && action == "Index" ? "active" : "")" href="~/accounts/Index"> Danh sách tài khoản </a></li>
+                                <li><a class="@(controller == "accounts" && action == "Create" ? "active" : "")" href="~/accounts/Create"> Thêm tài khoản </a></li>
                             </ul>
                         </li>
                         <li class="submenu">
-                            <a href="#"><i class="fas fa-calendar-alt"></i> <span> Danh mục </span> <span class="menu-arrow"></span></a>
+                            <a class="@(controller == "categories" ? "active" : "")" href="#"><i class="fas fa-calendar-alt"></i> <span> Danh mục </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="~/categories/Index">Tất cả danh mục</a></li>
-                                <li><a href="~/categories/Create">Thêm danh mục</a></li>
+                                <li><a class="@(controller == "categories" && action == "Index" ? "active" : "")" href="~/categories/Index">Tất cả danh mục</a></li>
+                                <li><a class="@(controller == "categories" && action == "Create" ? "active" : "")" href="~/categories/Create">Thêm danh mục</a></li>
                             </ul>
                         </li>
-                        <li> <a href="~/orders/Statistics"><i class="fas fa-money-bill-alt"></i> <span>Thống kê doanh thu</span></a> </li>
+                        <li  class="@(controller == "orders" && action == "Statistics" ? "active" : "")" > <a href="~/orders/Statistics"><i class="fas fa-money-bill-alt"></i> <span>Thống kê doanh thu</span></a> </li>
 
                         <li class="submenu">
-                            <a href="#"><i class="fas fa-edit"></i> <span> Đơn hàng </span> <span class="menu-arrow"></span></a>
+                            <a class="@(controller == "orders" && action != "Statistics" ? "active" : "")" href="#"><i class="fas fa-edit"></i> <span> Đơn hàng </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
-                                <li><a href="~/orders/">Tất cả đơn hàng</a></li>
-                                <li><a href="~/orders/Create"> Thêm đơn hàng</a></li>
+                                <li><a class="@(controller == "orders" && action == "Index" ? "active" : "")"  href="~/orders/">Tất cả đơn hàng</a></li>
+                                <li><a class="@(controller == "orders" && action == "Create" ? "active" : "")"  href="~/orders/Create"> Thêm đơn hàng</a></li>
                             </ul>
                         </li>
-                      
+
                     </ul>
                 </div>
             </div>
