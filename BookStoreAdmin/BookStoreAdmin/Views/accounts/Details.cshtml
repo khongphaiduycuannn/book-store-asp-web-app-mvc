@@ -5,7 +5,13 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2 class="mb-4">Details</h2>
+<div class="page-header mt-5">
+    <div class="row">
+        <div class="col">
+            <h3 class="page-title">Thông tin tài khoản</h3>
+        </div>
+    </div>
+</div>
 
 <div class="card mb-4">
     <div class="card-header">
@@ -30,7 +36,7 @@
         </dl>
     </div>
     <div class="card-footer text-right">
-        @Html.ActionLink("Edit", "Edit", new { id = Model.account_id }, new { @class = "btn btn-warning" })
-        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.account_id }, new { @class = "btn btn-warning" })
+        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Quay lại</button>
     </div>
 </div>
