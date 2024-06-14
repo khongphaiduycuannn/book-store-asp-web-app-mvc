@@ -1,4 +1,5 @@
 ﻿using BookStoreAdmin.Models;
+using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -7,6 +8,8 @@ using System.Drawing;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
+using System.Web.UI;
+using PagedList;
 
 namespace BookStoreAdmin.Controllers
 {
@@ -121,10 +124,12 @@ namespace BookStoreAdmin.Controllers
         }
 
         // GET: orders
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            var orders = db.orders.Include(o => o.account);
-            return View(orders.ToList());
+            int pageSize = 3; // Số lượng item trên mỗi trang
+            int pageNumber = (page ?? 1); // Trang hiện tại, mặc định là 1
+            var orders = db.orders.Include(o => o.account).OrderBy(b=>b.order_id).ToPagedList(pageNumber, pageSize);
+            return View(orders);
         }
 
         // GET: orders/Details/5
@@ -190,7 +195,16 @@ namespace BookStoreAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(order).State = EntityState.Modified;
+                var existingOrder = db.orders.Find(order.order_id);
+                if (existingOrder == null)
+                {
+                    return HttpNotFound();
+                }
+                existingOrder.phone_number = order.phone_number;
+                existingOrder.address = order.address;
+                existingOrder.shipping_fee = order.shipping_fee;
+                existingOrder.status= order.status;
+                db.Entry(existingOrder).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

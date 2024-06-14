@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Diagnostics;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -59,6 +60,15 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "book_id,author_id,category_id,name,image,description,publish_company,publish_year,price,sold,remain,is_deleted,created_at")] book book)
         {
+
+            if (IsBooksNameExists(book.name))
+            {
+                ModelState.AddModelError("email", "Tên Sách đã tồn tại.");
+                return View(book);
+            }
+            book.sold = 0;
+            book.created_at = DateTime.Now;
+            book.is_deleted = 0;
             if (ModelState.IsValid)
             {
                 db.books.Add(book);
@@ -71,6 +81,10 @@ namespace BookStoreAdmin.Controllers
             return View(book);
         }
 
+        private bool IsBooksNameExists(string name)
+        {
+            return db.books.FirstOrDefault(x => x.name == name) != null;
+        }
         // GET: Books/Edit/5
         public ActionResult Edit(int? id)
         {
@@ -97,16 +111,40 @@ namespace BookStoreAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(book).State = System.Data.Entity.EntityState.Modified;
+                // Tìm sách trong cơ sở dữ liệu
+                var existingBook = db.books.Find(book.book_id);
+                if (existingBook == null)
+                {
+                    return HttpNotFound();
+                }
+
+                // Cập nhật các thuộc tính của sách hiện tại
+                existingBook.author_id = book.author_id;
+                existingBook.category_id = book.category_id;
+                existingBook.name = book.name;
+                existingBook.image = book.image;
+                existingBook.description = book.description;
+                existingBook.publish_company = book.publish_company;
+                existingBook.publish_year = book.publish_year;
+                existingBook.price = book.price;
+                existingBook.sold = book.sold;
+                existingBook.remain = book.remain;
+                existingBook.is_deleted = book.is_deleted;
+
+                // Đánh dấu sách là đã được chỉnh sửa
+                db.Entry(existingBook).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
 
+            // Nếu ModelState không hợp lệ, tải lại danh sách Author và Category
             ViewBag.AuthorList = new SelectList(db.authors, "author_id", "name", book.author_id);
             ViewBag.CategoryList = new SelectList(db.categories, "category_id", "name", book.category_id);
 
             return View(book);
         }
+
 
         // GET: books/Delete/5
         public ActionResult Delete(int? id)

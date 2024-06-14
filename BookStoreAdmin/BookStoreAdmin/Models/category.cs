@@ -1,7 +1,8 @@
-namespace BookStoreAdmin.Models
+﻿namespace BookStoreAdmin.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -19,10 +20,14 @@ namespace BookStoreAdmin.Models
         public int category_id { get; set; }
 
         [StringLength(255)]
+        [DisplayName("Tên danh mục")]
+        [Required(ErrorMessage = "Tên danh mục là trường bắt buộc.")]
         public string name { get; set; }
 
+        [DisplayName("Mô tả")]
         public string description { get; set; }
 
+        [DisplayName("Ngày tạo")]
         public DateTime? created_at { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

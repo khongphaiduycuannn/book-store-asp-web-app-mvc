@@ -5,39 +5,32 @@
     Layout = "~/Views/Shared/_Admin.cshtml";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>category</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.created_at)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.created_at)
-        </dd>
-
-    </dl>
+<div class="page-header mt-5">
+    <div class="row">
+        <div class="col">
+            <h3 class="page-title">Thông tin danh mục</h3>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.category_id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h4 class="card-title">@Html.DisplayFor(model => model.name)</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.name)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.name)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.description)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.description)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.created_at)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.created_at)</dd>
+        </dl>
+    </div>
+    <div class="card-footer text-right">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.category_id }, new { @class = "btn btn-warning" })
+        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Quay lại</button>
+    </div>
+</div>

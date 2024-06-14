@@ -44,22 +44,31 @@ namespace BookStoreAdmin.Controllers
         {
             return View();
         }
-
-        // POST: categories/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
+        // GET: categories/Create
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "category_id,name,description,created_at")] category category)
         {
+            if (IsCategoryNameExists(category.name))
+            {
+                ModelState.AddModelError("name", "Tên danh mục đã tồn tại.");
+                return View(category);
+            }
+
             if (ModelState.IsValid)
             {
+                category.created_at = DateTime.Now;
                 db.categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
             return View(category);
+        }
+
+        private bool IsCategoryNameExists(string name)
+        {
+            return db.categories.FirstOrDefault(x => x.name == name) != null;
         }
 
         // GET: categories/Edit/5
@@ -70,6 +79,8 @@ namespace BookStoreAdmin.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             category category = db.categories.Find(id);
+
+           
             if (category == null)
             {
                 return HttpNotFound();
@@ -86,12 +97,34 @@ namespace BookStoreAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(category).State = EntityState.Modified;
+                // Tải thực thể từ cơ sở dữ liệu
+                var existingCategory = db.categories.Find(category.category_id);
+                if (existingCategory == null)
+                {
+                    return HttpNotFound();
+                }
+
+                // Kiểm tra xem tên danh mục đã tồn tại hay chưa (ngoại trừ danh mục hiện tại)
+                if (IsCategoryNameExists(category.name) && !existingCategory.name.Equals(category.name, StringComparison.OrdinalIgnoreCase))
+                {
+                    ModelState.AddModelError("name", "Tên danh mục đã tồn tại.");
+                    return View(category);
+                }
+
+                // Cập nhật các thuộc tính của thực thể hiện tại
+                existingCategory.name = category.name;
+                existingCategory.description = category.description;
+                existingCategory.created_at = category.created_at; // Nếu bạn thực sự cần cập nhật thời gian tạo
+
+                // Đánh dấu thực thể là đã được chỉnh sửa
+                db.Entry(existingCategory).State = EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(category);
         }
+
 
         // GET: categories/Delete/5
         public ActionResult Delete(int? id)
