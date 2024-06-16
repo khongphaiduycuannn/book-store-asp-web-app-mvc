@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using BookStoreAdmin.Models;
+using PagedList;
 
 namespace BookStoreAdmin.Controllers
 {
@@ -15,10 +16,16 @@ namespace BookStoreAdmin.Controllers
         private BookStoreDB db = new BookStoreDB();
 
         // GET: authors
-        public ActionResult Index()
+        public ActionResult Index(int? page)
         {
-            return View(db.authors.ToList());
+            int pageSize = 5; // Số lượng item trên mỗi trang
+            int pageNumber = (page ?? 1); // Trang hiện tại, mặc định là 1
+            var author = db.authors
+                                .OrderBy(b => b.author_id) // Sắp xếp theo book_id hoặc bất kỳ cột nào khác
+                                .ToPagedList(pageNumber, pageSize);
+            return View(author);
         }
+
 
         // GET: authors/Details/5
         public ActionResult Details(int? id)
@@ -50,6 +57,8 @@ namespace BookStoreAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
+                author.created_at = DateTime.Now;
+                author.is_deleted = 0;
                 db.authors.Add(author);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -82,9 +91,25 @@ namespace BookStoreAdmin.Controllers
         {
             if (ModelState.IsValid)
             {
-                db.Entry(author).State = EntityState.Modified;
+                // Tìm sách trong cơ sở dữ liệu
+                var existingBook = db.authors.Find(author.author_id);
+                if (existingBook == null)
+                {
+                    return HttpNotFound();
+                }
+
+                // Cập nhật các thuộc tính của sách hiện tại
+                existingBook.name = author.name;
+                existingBook.image = author.image;
+                existingBook.description = author.description;
+                existingBook.is_deleted = author.is_deleted;
+
+                // Đánh dấu sách là đã được chỉnh sửa
+                db.Entry(existingBook).State = System.Data.Entity.EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
+               
             }
             return View(author);
         }

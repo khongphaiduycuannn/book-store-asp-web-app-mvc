@@ -23,11 +23,12 @@ namespace BookStoreAdmin.Controllers
             int pageNumber = (page ?? 1); // Trang hiện tại, mặc định là 1
 
             var accounts = db.accounts
-                                 .OrderBy(b => b.account_id) // Sắp xếp theo book_id hoặc bất kỳ cột nào khác
+                                 .OrderBy(b => b.account_id) // Sắp xếp theo account_id hoặc bất kỳ cột nào khác
                                  .ToPagedList(pageNumber, pageSize);
 
             return View(accounts);
         }
+
         // GET: accounts/Details/5
         public ActionResult Details(int? id)
         {
@@ -50,14 +51,11 @@ namespace BookStoreAdmin.Controllers
         }
 
         // POST: accounts/Create
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "account_id,username,email,password,role")] account account)
         {
             bool isExist = IsEmailExists(account.email);
-
 
             Debug.WriteLine(isExist);
 
@@ -69,9 +67,6 @@ namespace BookStoreAdmin.Controllers
 
             if (ModelState.IsValid)
             {
-
-
-
                 if (account.role != "Admin" && account.role != "Client")
                 {
                     ModelState.AddModelError("role", "Vui lòng chọn vai trò là 'Admin' hoặc 'Client'.");
@@ -88,7 +83,7 @@ namespace BookStoreAdmin.Controllers
 
         private bool IsEmailExists(string email)
         {
-            return db.accounts.FirstOrDefault(x=> x.email == email) != null;
+            return db.accounts.FirstOrDefault(x => x.email == email) != null;
         }
 
         // GET: accounts/Edit/5
@@ -107,8 +102,6 @@ namespace BookStoreAdmin.Controllers
         }
 
         // POST: accounts/Edit/5
-        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "account_id,username,email,password,role,created_at")] account account)
@@ -155,6 +148,43 @@ namespace BookStoreAdmin.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        // POST: Account/Login
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(string email, string password)
+        {
+            if (ModelState.IsValid)
+            {
+                var account = db.accounts.FirstOrDefault(x => x.email == email);
+                if (account == null || account.password != password)
+                {
+                    ModelState.AddModelError("", "Email hoặc mật khẩu không đúng.");
+                    ViewBag.err = "Đăng nhập không thành công";
+                    return View();
+                }
+
+                // Đăng nhập thành công
+                Session["Username"] = account.username;  // Lưu trữ thông tin người dùng trong Session
+                TempData["SuccessMessage"] = "Đăng nhập thành công";
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View();
+        }
+
+
+        // GET: Account/Logout
+        public ActionResult Logout()
+        {
+            Session.Clear(); // Xóa session khi người dùng đăng xuất
+            return RedirectToAction("Login", "accounts");
         }
     }
 }
