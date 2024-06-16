@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.SqlClient;
 using System.Diagnostics;
 using System.Linq;
 using System.Net;
@@ -17,16 +18,48 @@ namespace BookStoreAdmin.Controllers
         private BookStoreDB db = new BookStoreDB();
 
         // GET: books
-        public ActionResult Index(int? page)
+        public ActionResult Index(int? page, int? topWell, int? topNotWell, string searchString)
         {
             int pageSize = 5; // Số lượng item trên mỗi trang
             int pageNumber = (page ?? 1); // Trang hiện tại, mặc định là 1
 
-            var books = db.books.Include(b => b.author).Include(b => b.category)
-                                 .OrderBy(b => b.book_id) // Sắp xếp theo book_id hoặc bất kỳ cột nào khác
-                                 .ToPagedList(pageNumber, pageSize);
 
-            return View(books);
+            IQueryable<book> books;
+
+            if (topWell.HasValue && topWell > 0)
+            {
+                string sqlQuery = @"
+                    select top (@TopCount) WITH TIES * from book order by sold Desc                    
+                 ";
+
+
+                // Thực hiện truy vấn SQL với tham số top.Value
+                books = db.Database.SqlQuery<book>(sqlQuery,  new SqlParameter("TopCount", topWell.Value)).ToList().AsQueryable().OrderBy(b => b.book_id);
+
+            }
+            else if(topNotWell.HasValue && topNotWell > 0)
+            {
+                string sqlQuery = @"
+                    select top (@TopCount) WITH TIES * from book order by sold ASC                    
+                 ";
+
+
+                // Thực hiện truy vấn SQL với tham số top.Value
+                books = db.Database.SqlQuery<book>(sqlQuery, new SqlParameter("TopCount", topNotWell.Value)).ToList().AsQueryable().OrderBy(b => b.book_id);
+            } else
+            {
+                books = db.books.Include(b => b.author).Include(b => b.category)
+                                     .OrderBy(b => b.book_id);
+            }
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                books = books.Where(p => p.name.Contains(searchString));
+            }
+
+            IPagedList<book> pageListBooks = books.ToPagedList(pageNumber, pageSize);
+
+            return View(pageListBooks);
         }
 
 
