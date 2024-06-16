@@ -136,6 +136,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\accountsController.cs" />
+    <Compile Include="Controllers\authorsController.cs" />
     <Compile Include="Controllers\booksController.cs" />
     <Compile Include="Controllers\categoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -229,6 +230,12 @@
     <Content Include="Views\accounts\Edit.cshtml" />
     <Content Include="Views\accounts\Index.cshtml" />
     <Content Include="Views\orders\Statistics.cshtml" />
+    <Content Include="Views\authors\Create.cshtml" />
+    <Content Include="Views\authors\Delete.cshtml" />
+    <Content Include="Views\authors\Details.cshtml" />
+    <Content Include="Views\authors\Edit.cshtml" />
+    <Content Include="Views\authors\Index.cshtml" />
+    <Content Include="Views\accounts\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
