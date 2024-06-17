@@ -1,0 +1,172 @@
+﻿@model PagedList.IPagedList<Book_Store.Models.book>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h3 style="color:white;">Tủ sách</h3>
+
+<form method="get" action="@Url.Action("Index")" class="filter-form mb-4">
+    <div class="row">
+        <div class="col-md-3">
+            <label for="minPrice">Min Price</label>
+            <input type="number" class="form-control" id="minPrice" name="minPrice" value="@Request.QueryString["minPrice"]" placeholder="Min Price" />
+        </div>
+        <div class="col-md-3">
+            <label for="maxPrice">Max Price</label>
+            <input type="number" class="form-control" id="maxPrice" name="maxPrice" value="@Request.QueryString["maxPrice"]" placeholder="Max Price" />
+        </div>
+        <div class="col-md-3 align-self-end">
+            <button type="submit" class="btn btn-primary">Filter</button>
+        </div>
+    </div>
+</form>
+
+<div class="book-list">
+    @foreach (var item in Model)
+    {
+        <div class="book-content">
+            <a href="@Url.Action("Details", "Books", new { id = item.book_id })">
+                <div class="book-image">
+                    <img class="card-img-top product-image-detail" src="@Url.Content("~/Content/Image/" + item.image)" alt="Product Image" />
+                </div>
+                <div class="book-info">
+                    <div class="book-name">
+                        @Html.DisplayFor(modelItem => item.name)
+                    </div>
+                    <div class="book-author">
+                        <p>Tác giả: @Html.DisplayFor(modelItem => item.author.name)</p>
+                    </div>
+                    <div class="book-category">
+                        <p>Thể loại: @Html.DisplayFor(modelItem => item.category.name)</p>
+                    </div>
+                    <div class="book-price">
+                        <p>Giá: @Html.DisplayFor(modelItem => item.price)</p>
+                    </div>
+                    <div class="book-sold">
+                        <p>Đã bán: @Html.DisplayFor(modelItem => item.sold)</p>
+                    </div>
+                </div>
+            </a>
+            <div class="btns">
+                <button type="submit" class="btn btn-primary" id="addToCartButton">Mua hàng</button>
+            </div>
+        </div>
+        }
+</div>
+
+<div class="pagination-container">
+    @Html.PagedListPager(Model, page => Url.Action("Index", new
+    {
+        page,
+        minPrice = Request.QueryString["minPrice"],
+        maxPrice = Request.QueryString["maxPrice"]
+    }), PagedListRenderOptions.Classic)
+</div>
+
+<style>
+    h3 {
+        width: 100%;
+        background-color: #36a189;
+        padding: 10px;
+        text-align: left;
+        margin-bottom: 20px;
+        border-radius: 5px;
+    }
+
+    .filter-form {
+        background-color: #f8f9fa;
+        padding: 15px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+        .filter-form label {
+            font-weight: bold;
+        }
+
+    .book-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 20px;
+    }
+
+    .book-content {
+        border: 1px solid #ccc;
+        padding: 20px;
+        border-radius: 10px;
+        background-color: #fff;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: transform 0.2s;
+    }
+
+        .book-content:hover {
+            transform: translateY(-10px);
+        }
+
+        .book-content a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+    .book-image {
+        text-align: center;
+        margin-bottom: 15px;
+    }
+
+        .book-image img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+
+    .book-info {
+        text-align: left;
+    }
+
+    .book-name {
+        font-weight: bold;
+        font-size: 24px;
+        margin-bottom: 10px;
+        text-align: center;
+    }
+
+    .book-info p {
+        margin: 5px 0;
+    }
+
+    .btns {
+        text-align: center;
+        margin-top: 15px;
+    }
+
+        .btns .btn {
+            width: 45%;
+            margin: 5px;
+        }
+
+    .pagination-container {
+        text-align: center;
+        margin-top: 20px;
+    }
+
+        .pagination-container .pagination {
+            justify-content: center;
+        }
+
+        .pagination-container .page-item {
+            margin: 0 5px;
+        }
+
+        .pagination-container .page-link {
+            color: #007bff;
+        }
+
+        .pagination-container .active .page-link {
+            background-color: #007bff;
+            border-color: #007bff;
+            color: white;
+        }
+</style>
