@@ -191,14 +191,14 @@
                             </ul>
                         </li>
                         <li class="@(controller == "orders" && action == "Statistics" ? "active" : "")"> <a href="~/orders/Statistics"><i class="fas fa-money-bill-alt"></i> <span>Thống kê doanh thu</span></a> </li>
-
-                        <li class="submenu">
-                            <a class="@(controller == "orders" && action != "Statistics" ? "active" : "")" href="#"><i class="fas fa-edit"></i> <span> Đơn hàng </span> <span class="menu-arrow"></span></a>
+                        <li class="@(controller == "orders" && action != "Statistics" ? "active" : "")"> <a href="~/orders"><i class="fas fa-edit"></i> <span>Tất cả đơn hàng</span></a> </li>
+                        @*<li class="submenu">
+                            <a class="@(controller == "orders" && action != "Statistics" ? "active" : "")" href="#"><i class="fas fa-edit"></i> <span> Tất cả đơn hàng </span> <span class="menu-arrow"></span></a>
                             <ul class="submenu_class" style="display: none;">
                                 <li><a class="@(controller == "orders" && action == "Index" ? "active" : "")" href="~/orders/">Tất cả đơn hàng</a></li>
                                 <li><a class="@(controller == "orders" && action == "Create" ? "active" : "")" href="~/orders/Create"> Thêm đơn hàng</a></li>
                             </ul>
-                        </li>
+                        </li>*@
 
                     </ul>
                 </div>
