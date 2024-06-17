@@ -141,6 +141,7 @@
     <Compile Include="Controllers\categoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ordersController.cs" />
+    <Compile Include="Filters\CustomAuthorizeAttribute.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -151,6 +152,7 @@
     <Compile Include="Models\cart.cs" />
     <Compile Include="Models\cart_book.cs" />
     <Compile Include="Models\category.cs" />
+    <Compile Include="Models\ErrorMessage.cs" />
     <Compile Include="Models\order.cs" />
     <Compile Include="Models\order_book.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

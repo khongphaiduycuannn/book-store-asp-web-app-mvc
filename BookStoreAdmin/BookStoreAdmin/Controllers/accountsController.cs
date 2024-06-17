@@ -19,6 +19,7 @@ namespace BookStoreAdmin.Controllers
         // GET: accounts
         public ActionResult Index(int? page)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             int pageSize = 5; // Số lượng item trên mỗi trang
             int pageNumber = (page ?? 1); // Trang hiện tại, mặc định là 1
 
@@ -32,6 +33,7 @@ namespace BookStoreAdmin.Controllers
         // GET: accounts/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -47,6 +49,7 @@ namespace BookStoreAdmin.Controllers
         // GET: accounts/Create
         public ActionResult Create()
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             return View();
         }
 
@@ -55,6 +58,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "account_id,username,email,password,role")] account account)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             bool isExist = IsEmailExists(account.email);
 
             Debug.WriteLine(isExist);
@@ -89,6 +93,7 @@ namespace BookStoreAdmin.Controllers
         // GET: accounts/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -106,6 +111,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "account_id,username,email,password,role,created_at")] account account)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (ModelState.IsValid)
             {
                 db.Entry(account).State = EntityState.Modified;
@@ -118,6 +124,7 @@ namespace BookStoreAdmin.Controllers
         // GET: accounts/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -135,6 +142,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             account account = db.accounts.Find(id);
             db.accounts.Remove(account);
             db.SaveChanges();
@@ -157,23 +165,33 @@ namespace BookStoreAdmin.Controllers
 
         // POST: Account/Login
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
         public ActionResult Login(string email, string password)
         {
             if (ModelState.IsValid)
             {
                 var account = db.accounts.FirstOrDefault(x => x.email == email);
-                if (account == null || account.password != password)
+                if (account == null)
                 {
-                    ModelState.AddModelError("", "Email hoặc mật khẩu không đúng.");
-                    ViewBag.err = "Đăng nhập không thành công";
+                    ViewBag.err = "Đăng nhập không thành công, tài khoản không tồn tại.";
+                    return View();
+                }
+                else if (account.password != password)
+                {
+                    ViewBag.err = "Đăng nhập không thành công, email hoặc mật khẩu không đúng.";
+                    return View();
+                }
+                else if (account.role != "Admin")
+                {
+                    ViewBag.err = "Đăng nhập không thành công, tài khoản không đủ quyền để truy cập trang quản lý.";
                     return View();
                 }
 
                 // Đăng nhập thành công
-                Session["Username"] = account.username;  // Lưu trữ thông tin người dùng trong Session
+                Session["Username"] = account.username;
                 TempData["SuccessMessage"] = "Đăng nhập thành công";
-                return RedirectToAction("Index", "Home");
+                return RedirectToAction("Index", "Home"); // Chuyển hướng về trang chủ sau khi đăng nhập thành công
             }
 
             return View();
@@ -183,6 +201,7 @@ namespace BookStoreAdmin.Controllers
         // GET: Account/Logout
         public ActionResult Logout()
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             Session.Clear(); // Xóa session khi người dùng đăng xuất
             return RedirectToAction("Login", "accounts");
         }

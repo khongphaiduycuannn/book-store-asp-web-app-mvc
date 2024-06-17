@@ -18,6 +18,7 @@ namespace BookStoreAdmin.Controllers
         // GET: categories
         public ActionResult Index(int? page)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             int pageSize = 3; // Số lượng item trên mỗi trang
             int pageNumber = (page ?? 1); // Trang hiện tại, mặc định là 1
             var categories = db.categories.OrderBy(b => b.category_id).ToPagedList(pageNumber, pageSize);
@@ -27,6 +28,7 @@ namespace BookStoreAdmin.Controllers
         // GET: categories/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -42,6 +44,7 @@ namespace BookStoreAdmin.Controllers
         // GET: categories/Create
         public ActionResult Create()
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             return View();
         }
         // GET: categories/Create
@@ -49,6 +52,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "category_id,name,description,created_at")] category category)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (IsCategoryNameExists(category.name))
             {
                 ModelState.AddModelError("name", "Tên danh mục đã tồn tại.");
@@ -74,6 +78,7 @@ namespace BookStoreAdmin.Controllers
         // GET: categories/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -95,6 +100,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "category_id,name,description,created_at")] category category)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (ModelState.IsValid)
             {
                 // Tải thực thể từ cơ sở dữ liệu
@@ -129,6 +135,7 @@ namespace BookStoreAdmin.Controllers
         // GET: categories/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -146,6 +153,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             category category = db.categories.Find(id);
             db.categories.Remove(category);
             db.SaveChanges();

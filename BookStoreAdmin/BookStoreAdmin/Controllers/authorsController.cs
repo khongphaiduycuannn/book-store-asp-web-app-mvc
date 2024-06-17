@@ -18,6 +18,7 @@ namespace BookStoreAdmin.Controllers
         // GET: authors
         public ActionResult Index(int? page)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             int pageSize = 5; // Số lượng item trên mỗi trang
             int pageNumber = (page ?? 1); // Trang hiện tại, mặc định là 1
             var author = db.authors
@@ -30,6 +31,7 @@ namespace BookStoreAdmin.Controllers
         // GET: authors/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -45,6 +47,7 @@ namespace BookStoreAdmin.Controllers
         // GET: authors/Create
         public ActionResult Create()
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             return View();
         }
 
@@ -55,6 +58,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "author_id,name,image,description,is_deleted,created_at")] author author)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (ModelState.IsValid)
             {
                 author.created_at = DateTime.Now;
@@ -70,6 +74,7 @@ namespace BookStoreAdmin.Controllers
         // GET: authors/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -89,6 +94,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "author_id,name,image,description,is_deleted,created_at")] author author)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (ModelState.IsValid)
             {
                 // Tìm sách trong cơ sở dữ liệu
@@ -117,6 +123,7 @@ namespace BookStoreAdmin.Controllers
         // GET: authors/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -134,6 +141,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             author author = db.authors.Find(id);
             db.authors.Remove(author);
             db.SaveChanges();

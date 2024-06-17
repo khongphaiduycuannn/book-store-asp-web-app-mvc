@@ -1,4 +1,5 @@
-﻿using BookStoreAdmin.Models;
+﻿using BookStoreAdmin.Filters;
+using BookStoreAdmin.Models;
 using PagedList;
 using System;
 using System.Collections.Generic;
@@ -17,6 +18,7 @@ namespace BookStoreAdmin.Controllers
 
         public ActionResult Index(int? page)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             var sold = db.books.Sum(x => x.sold);
             var revenue = db.books.Sum(x => x.price * x.sold);
             var remain = db.books.Sum(x => x.remain);
@@ -47,6 +49,7 @@ namespace BookStoreAdmin.Controllers
 
         public ActionResult Delete(int accountId)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             try
             {
                 var account = db.accounts.Find(accountId);

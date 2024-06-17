@@ -26,6 +26,7 @@ namespace BookStoreAdmin.Controllers
 
         public ActionResult Statistics(string filterType)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             List<OrderStatistics> statistics;
 
             switch (filterType)
@@ -123,6 +124,7 @@ namespace BookStoreAdmin.Controllers
         // GET: orders
         public ActionResult Index(int? page)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             int pageSize = 3; // Số lượng item trên mỗi trang
             int pageNumber = (page ?? 1); // Trang hiện tại, mặc định là 1
             var orders = db.orders.Include(o => o.account).OrderBy(b=>b.order_id).ToPagedList(pageNumber, pageSize);
@@ -132,6 +134,7 @@ namespace BookStoreAdmin.Controllers
         // GET: orders/Details/5
         public ActionResult Details(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -147,6 +150,7 @@ namespace BookStoreAdmin.Controllers
         // GET: orders/Create
         public ActionResult Create()
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             ViewBag.account_id = new SelectList(db.accounts, "account_id", "username");
             return View();
         }
@@ -158,6 +162,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "order_id,account_id,created_at")] order order)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (ModelState.IsValid)
             {
                 db.orders.Add(order);
@@ -172,6 +177,7 @@ namespace BookStoreAdmin.Controllers
         // GET: Order/Edit/5
         public ActionResult Edit(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -190,6 +196,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "order_id,account_id,address,phone_number,shipping_fee,status")] order order)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (ModelState.IsValid)
             {
                 var existingOrder = db.orders.Find(order.order_id);
@@ -212,6 +219,7 @@ namespace BookStoreAdmin.Controllers
         // GET: orders/Delete/5
         public ActionResult Delete(int? id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -229,6 +237,7 @@ namespace BookStoreAdmin.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
             order order = db.orders.Find(id);
             db.orders.Remove(order);
             db.SaveChanges();
