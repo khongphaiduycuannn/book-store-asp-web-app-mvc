@@ -1,0 +1,65 @@
+﻿@model BookStoreAdmin.Models.order
+
+@{
+    ViewBag.Title = "Xóa Order";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2 class="text-danger"></h2>
+
+<div class="alert alert-warning" role="alert">
+    <h3>Bạn có chắc chắn muốn xóa?</h3>
+</div>
+
+<div class="card">
+    <div class="card-header bg-danger text-white">
+        <h4>Chi Tiết Order</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">
+                Tên Người Dùng
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.account.username)
+            </dd>
+
+            <dt class="col-sm-3">
+                Ngày Tạo
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.created_at)
+            </dd>
+
+            <dt class="col-sm-3">
+                Địa Chỉ
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.address)
+            </dd>
+
+            <dt class="col-sm-3">
+                Số Điện Thoại
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.phone_number)
+            </dd>
+
+            <dt class="col-sm-3">
+                Trạng Thái
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.status)
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer text-center">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <button type="submit" class="btn btn-danger">Xóa</button>
+            @Html.ActionLink("Quay lại danh sách", "Index", null, new { @class = "btn btn-secondary ml-2" })
+        }
+    </div>
+</div>

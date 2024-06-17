@@ -1,0 +1,42 @@
+﻿@model BookStoreAdmin.Models.account
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="page-header mt-5">
+    <div class="row">
+        <div class="col">
+            <h3 class="page-title">Thông tin tài khoản</h3>
+        </div>
+    </div>
+</div>
+
+<div class="card mb-4">
+    <div class="card-header">
+        <h4 class="card-title">@Html.DisplayFor(model => model.username)</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.username)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.username)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.email)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.email)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.password)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.password)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.role)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.role)</dd>
+
+            <dt class="col-sm-4">@Html.DisplayNameFor(model => model.created_at)</dt>
+            <dd class="col-sm-8">@Html.DisplayFor(model => model.created_at)</dd>
+        </dl>
+    </div>
+    <div class="card-footer text-right">
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.account_id }, new { @class = "btn btn-warning" })
+        <button type="button" class="btn btn-secondary" onclick="window.history.back();">Quay lại</button>
+    </div>
+</div>

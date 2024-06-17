@@ -1,0 +1,69 @@
+﻿@model BookStoreAdmin.Models.order
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="page-header mt-5">
+    <div class="row">
+        <div class="col">
+            <h3 class="page-title">Chi tiết đơn hàng</h3>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <h4>Order Information</h4>
+            <dl class="row">
+                <dt class="col-sm-4">Người mua</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.account.username)</dd>
+
+                <dt class="col-sm-4">Ngày Mua</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.created_at)</dd>
+
+                <dt class="col-sm-4">Địa Chỉ</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.address)</dd>
+
+                <dt class="col-sm-4">Số Điện Thoại</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.phone_number)</dd>
+
+                <dt class="col-sm-4">Phí Vận Chuyển</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.shipping_fee)</dd>
+
+                <dt class="col-sm-4">Tổng Đơn Hàng</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.total_bill)</dd>
+                <dt class="col-sm-4">Trạng Thái Đơn Hàng</dt>
+                <dd class="col-sm-8">@Html.DisplayFor(model => model.status)</dd>
+            </dl>
+        </div>
+    </div>
+
+    <h3>Books in this Order</h3>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Tên Quyển Sách</th>
+                <th>Số lượng</th>
+                <th>Đơn Giá</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model.order_book)
+            {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.book.name)</td>
+                    <td>@Html.DisplayFor(modelItem => item.quantity)</td>
+                    <td>@Html.DisplayFor(modelItem => item.total_amount)</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.order_id }, new { @class = "btn btn-primary" }) |
+        @Html.ActionLink("Back to List", "Index", null, new { @class = "btn btn-secondary" })
+    </p>
+</div>

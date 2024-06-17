@@ -1,0 +1,75 @@
+﻿@model List<BookStoreAdmin.Controllers.OrderStatistics>
+
+@{
+    ViewBag.Title = "Statistics";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+    var filterType = Request.QueryString["filterType"];
+}
+
+<style>
+    select {
+        height: 38px;
+        width: 200px;
+        margin-top: 20px;
+        padding: .375rem .75rem;
+        font-size: 1rem;
+    }
+</style>
+
+<div class="page-header">
+    <div class="row">
+        <div class="col-sm-12 mt-5">
+            <h3 class="page-title mt-3">Order Statistics</h3>
+            <ul class="breadcrumb">
+                <li class="breadcrumb-item active"></li>
+            </ul>
+        </div>
+
+
+    </div>
+</div>
+
+<form action="@Url.Action("Statistics", "orders")" method="get">
+    <label>Chọn loại lọc:</label>
+    <select class="form-select form-select-lg mb-3" name="filterType" aria-label="label for the select">
+        <option value="day" @(filterType == "day" ? "selected" : "")>Theo ngày</option>
+        <option value="month" @(filterType == "month" ? "selected" : "")>Theo tháng</option>
+        <option value="year" @(filterType == "year" ? "selected" : "")>Theo năm</option>
+    </select>
+
+    <button class="btn btn-outline-primary" type="submit">Xem Thống Kê</button>
+
+    <a class="btn btn-outline-success" href="@Url.Action("ExportExcel","orders", new {filterType = filterType})">Xuất Excel</a>
+
+</form>
+
+
+
+
+<table id="table" class="table table-hover table-center display nowrap">
+    <thead>
+        <tr>
+            <th>@ViewBag.theader</th>
+            <th>Số lượng đơn hàng</th>
+            <th>Doanh thu</th>
+        </tr>
+    </thead>
+    <tbody id="tbody">
+        @foreach (var stat in Model)
+        {
+            <tr>
+                <td>
+                    @stat.titleShow
+
+                </td>
+                <td>@stat.OrderCount</td>
+                <td>@stat.OrderTotal</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">@TempData["Error"]</div>
+}

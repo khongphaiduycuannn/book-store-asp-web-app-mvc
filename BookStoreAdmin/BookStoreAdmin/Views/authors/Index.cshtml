@@ -1,0 +1,97 @@
+﻿@model PagedList.IPagedList<BookStoreAdmin.Models.author>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Danh sách tác giả";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<div class="page-header mt-5">
+    <div class="row">
+        <div class="col">
+            <h3 class="page-title">Danh sách tác giả</h3>
+        </div>
+    </div>
+</div>
+
+<div>
+    <p>
+        @Html.ActionLink("Tạo Mới", "Create", null, new { @class = "btn btn-primary mb-3" })
+    </p>
+</div>
+
+<div class="card card-table">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-stripped table-hover table-center mb-0">
+                <thead>
+                    <tr>
+                        <th>Tên Tác Giả</th>
+                        <th>Hình Ảnh</th>
+                        <th>Mô Tả</th>
+                        <th>Ngày Tạo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.name)</td>
+                            <td>
+                                <img src="~/assets/img/author/@item.image" alt="@item.name" width="100px" height="70px" class="rounded" />
+                            </td>
+                            <td>@Html.DisplayFor(modelItem => item.description)</td>
+                            <td>@Html.DisplayFor(modelItem => item.created_at)</td>
+                            <td class="text-right">
+                                <div class="dropdown dropdown-action">
+                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v ellipse_color"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        @Html.ActionLink("Chi Tiết", "Details", new { id = item.author_id }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Sửa", "Edit", new { id = item.author_id }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Xóa", "Delete", new { id = item.author_id }, new { @class = "dropdown-item" })
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination-container">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+           {
+               UlElementClasses = new string[] { "pagination" },
+               LiElementClasses = new string[] { "page-item" },
+               DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+               DisplayLinkToLastPage = PagedListDisplayMode.Always,
+               DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+               DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+               LinkToFirstPageFormat = "<<",
+               LinkToPreviousPageFormat = "<",
+               LinkToNextPageFormat = ">",
+               LinkToLastPageFormat = ">>",
+               MaximumPageNumbersToDisplay = 5,
+               EllipsesFormat = "&#8230;"
+           })
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="delete_asset" class="modal fade delete-modal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <img src="~/assets/img/sent.png" alt="" width="50" height="46">
+                <h3 class="delete_class">Bạn có chắc muốn xóa không?</h3>
+                <div class="m-t-20">
+                    <a href="#" class="btn btn-white" data-dismiss="modal">Hủy</a>
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

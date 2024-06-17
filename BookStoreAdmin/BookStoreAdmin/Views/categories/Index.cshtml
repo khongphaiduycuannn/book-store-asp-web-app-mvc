@@ -1,0 +1,88 @@
+﻿@model PagedList.IPagedList<BookStoreAdmin.Models.category>
+@using PagedList.Mvc;
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2 class="mb-4">Danh sách danh mục</h2>
+<div>
+    <p>
+        @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-primary mb-3" })
+    </p>
+</div>
+
+<div class="card card-table">
+    <div class="card-body">
+        <div class="table-responsive">
+            <table class="table table-stripped table-hover table-center mb-0">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Tên Danh Mục</th>
+                        <th>Mô Tả</th>
+                        <th>Ngày Tạo</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.category_id)</td>
+                            <td>@Html.DisplayFor(modelItem => item.name)</td>
+                            <td>@Html.DisplayFor(modelItem => item.description)</td>
+                            <td>@Html.DisplayFor(modelItem => item.created_at)</td>
+                            <td class="text-right">
+                                <div class="dropdown dropdown-action">
+                                    <a href="#" class="action-icon dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
+                                        <i class="fas fa-ellipsis-v ellipse_color"></i>
+                                    </a>
+                                    <div class="dropdown-menu dropdown-menu-right">
+                                        @Html.ActionLink("Details", "Details", new { id = item.category_id }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Sửa", "Edit", new { id = item.category_id }, new { @class = "dropdown-item" })
+                                        @Html.ActionLink("Xóa", "Delete", new { id = item.category_id }, new { @class = "dropdown-item" })
+                                    </div>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination-container">
+            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), new PagedListRenderOptions
+            {
+                UlElementClasses = new string[] { "pagination" },
+                LiElementClasses = new string[] { "page-item" },
+                DisplayLinkToFirstPage = PagedListDisplayMode.Always,
+                DisplayLinkToLastPage = PagedListDisplayMode.Always,
+                DisplayLinkToPreviousPage = PagedListDisplayMode.IfNeeded,
+                DisplayLinkToNextPage = PagedListDisplayMode.IfNeeded,
+                LinkToFirstPageFormat = "<<",
+                LinkToPreviousPageFormat = "<",
+                LinkToNextPageFormat = ">",
+                LinkToLastPageFormat = ">>",
+                MaximumPageNumbersToDisplay = 5,
+                EllipsesFormat = "&#8230;"
+            })
+        </div>
+    </div>
+</div>
+
+<!-- Modal -->
+<div id="delete_asset" class="modal fade delete-modal" role="dialog">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-body text-center">
+                <img src="~/assets/img/sent.png" alt="" width="50" height="46">
+                <h3 class="delete_class">Bạn có chắc muốn xóa không?</h3>
+                <div class="m-t-20">
+                    <a href="#" class="btn btn-white" data-dismiss="modal">Hủy</a>
+                    <button type="submit" class="btn btn-danger">Xóa</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

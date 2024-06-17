@@ -1,0 +1,65 @@
+﻿@model BookStoreAdmin.Models.account
+
+@{
+    ViewBag.Title = "Xóa Tài Khoản";
+    Layout = "~/Views/Shared/_Admin.cshtml";
+}
+
+<h2 class="text-danger"></h2>
+
+<div class="alert alert-warning" role="alert">
+    <h3>Bạn có chắc chắn muốn xóa?</h3>
+</div>
+
+<div class="card">
+    <div class="card-header bg-danger text-white">
+        <h4>Chi Tiết Tài Khoản</h4>
+    </div>
+    <div class="card-body">
+        <dl class="row">
+            <dt class="col-sm-3">
+                Tên Người Dùng
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.username)
+            </dd>
+
+            <dt class="col-sm-3">
+                Email
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            <dt class="col-sm-3">
+                Mật Khẩu
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.password)
+            </dd>
+
+            <dt class="col-sm-3">
+                Vai Trò
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.role)
+            </dd>
+
+            <dt class="col-sm-3">
+                Ngày Tạo
+            </dt>
+            <dd class="col-sm-9">
+                @Html.DisplayFor(model => model.created_at)
+            </dd>
+        </dl>
+    </div>
+    <div class="card-footer text-center">
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <button type="submit" class="btn btn-danger">Xóa</button>
+            <button type="button" class="btn btn-secondary" onclick="window.history.back();">Quay lại</button>
+        }
+    </div>
+</div>
