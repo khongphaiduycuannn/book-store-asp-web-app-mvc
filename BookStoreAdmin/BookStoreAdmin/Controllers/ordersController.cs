@@ -1,11 +1,17 @@
 ﻿using BookStoreAdmin.Models;
+using ClosedXML.Excel;
+using OfficeOpenXml;
 using PagedList;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Net;
+using System.Reflection;
+using System.Runtime.Remoting.Contexts;
 using System.Web.Mvc;
 
 namespace BookStoreAdmin.Controllers
@@ -23,12 +29,11 @@ namespace BookStoreAdmin.Controllers
     {
         private BookStoreDB db = new BookStoreDB();
 
+        static List<OrderStatistics> statistics;
 
         public ActionResult Statistics(string filterType)
         {
             if (Session["Username"] == null) return RedirectToAction("Login", "accounts");
-            List<OrderStatistics> statistics;
-
             switch (filterType)
             {
                 case "month":
@@ -244,7 +249,64 @@ namespace BookStoreAdmin.Controllers
             return RedirectToAction("Index");
         }
 
+        public ActionResult ExportExcel()
+        {
+            string username = Session["Username"] as string;
+            TempData["Error"] = username + "sdfsdf";
+            try
+            {
+                var data = statistics.ToList();
+                if (data != null && data.Count > 0)
+                {
+                    using (XLWorkbook wb = new XLWorkbook())
+                    {
+                        var ws = wb.Worksheets.Add(ToConvertDataTable(data.ToList()));
+                        ws.Column(1).Delete();
+                        ws.Cell("A1").Value = "Ngày";
+                        ws.Cell("B1").Value = "Số đơn hàng";
+                        ws.Cell("C1").Value = "Doanh thu";
+                        ws.Cell("E1").Value = "Người tạo";
+                        ws.Cell("F1").Value = username; 
+                        ws.Cell("E2").Value = "Thời gian tạo";
+                        ws.Cell("F2").Value = DateTime.Now.ToString("HH:mm dd/MM/yyyy");
+                        ws.Columns().AdjustToContents();
+                        using (MemoryStream stream = new MemoryStream())
+                        {
+                            wb.SaveAs(stream);
+                            string fileName = $"Report_{DateTime.Now.ToString("dd/MM/yyyy")}.xlsx";
+                            return File(stream.ToArray(), "application/vnd.openxmlformats-officedocuments.spreedsheetml.sheet", fileName);
+                        }
+                    }
+                }
+                TempData["Error"] = "Không có dữ liệu";
+            }
+            catch (Exception e)
+            {
+                TempData["Error"] = "Lỗi khi xuất dữ liệu: "+ e.Message;
+            }
+            return RedirectToAction("Statistics");
+        }
 
+        public DataTable ToConvertDataTable<T>(List<T> items)
+        {
+            DataTable dt = new DataTable(typeof(T).Name);
+            PropertyInfo[] propInfo = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (PropertyInfo prop in propInfo)
+            {
+                dt.Columns.Add(prop.Name);
+
+            }
+            foreach (var item in items)
+            {
+                var values = new object[propInfo.Length];
+                for (int i = 0; i < propInfo.Length; i++)
+                {
+                    values[i] = propInfo[i].GetValue(item, null);
+                }
+                dt.Rows.Add(values);
+            }
+            return dt;
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

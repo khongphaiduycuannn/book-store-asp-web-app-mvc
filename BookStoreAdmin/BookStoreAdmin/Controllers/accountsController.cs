@@ -182,7 +182,7 @@ namespace BookStoreAdmin.Controllers
                     ViewBag.err = "Đăng nhập không thành công, email hoặc mật khẩu không đúng.";
                     return View();
                 }
-                else if (account.role != "Admin")
+                else if (account.role.ToLower() != "admin")
                 {
                     ViewBag.err = "Đăng nhập không thành công, tài khoản không đủ quyền để truy cập trang quản lý.";
                     return View();
