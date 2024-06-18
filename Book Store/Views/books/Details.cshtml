@@ -10,7 +10,7 @@
 
 <div>
     <div class="container mt-2">
-        @Html.BeginForm("Details", "Books", FormMethod.Post) {
+        @using (Html.BeginForm("Details", "Books", FormMethod.Post)) { 
         <div class="row">
             <div class="book-image col-5">
                 <img class="card-img-top product-image-detail w-75" src="@Url.Content("~/Content/Image/" + @Model.Book.image)" alt="Product Image" style="border-radius: 10px;" />
@@ -29,19 +29,19 @@
                     <p>Mô tả: @Model.Book.description</p>
                 </div>
                 <div class="book-pushCom">
-                    <p>Nhà xuất bản: @Model.Book.publish_company)</p>
+                    <p>Nhà xuất bản: @Model.Book.publish_company</p>
                 </div>
                 <div class="book-pushYear">
-                    <p>Năm phát hành: @Model.Book.publish_year)</p>
+                    <p>Năm phát hành: @Model.Book.publish_year</p>
                 </div>
                 <div class="book-price">
-                    <p>Giá: @Model.Book.price)</p>
+                    <p>Giá: @Model.Book.price</p>
                 </div>
                 <div class="book-sold">
-                    <p>Đã bán: @Model.Book.sold)</p>
+                    <p>Đã bán: @Model.Book.sold</p>
                 </div>
                 <div class="book-remain">
-                    <p>Còn lại: @Model.Book.remain)</p>
+                    <p>Còn lại: @Model.Book.remain</p>
                 </div>
                 <div class="row">
                     <div class="col-md-4">
@@ -54,7 +54,7 @@
             </div>
             <p>@ViewBag.Error</p>
             <p>@ViewBag.Success</p>
-            <input type="hidden" name ="book" value=@Model.Book.book_id />
+            <input type="hidden" name="book" value=@Model.Book.book_id />
             <div class="btns mt-3">
                 <button type="submit" class="btn btn-success ms-5" id="buyNowButton">Mua hàng</button>
             </div>
@@ -78,10 +78,10 @@
         }
     </div>
 </div>
-<p>
+@*<p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.Book.book_id }) |
     @Html.ActionLink("Back to List", "Index")
-</p>
+</p>*@
 
 <style>
     .book-info p {
@@ -89,14 +89,14 @@
     }
 
     h3 {
-        margin-top: 5px;
-        width: 100%;
-        background-color: #36a189;
-        padding: 10px;
-        text-align: left;
-        margin-bottom: 20px;
-        border-radius: 5px;
-    }
+    margin-top: 5px;
+    width: 100%;
+    background-color: #36a189;
+    padding: 10px;
+    text-align: left;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
 
     .btns {
         text-align: center;
