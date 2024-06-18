@@ -39,6 +39,7 @@ namespace Book_Store.Controllers
         }
 
         // GET: books/Details/5
+        [HttpGet]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -65,6 +66,68 @@ namespace Book_Store.Controllers
             };
 
             ViewBag.Category = db.categories;
+
+            return View(viewModel);
+        }
+
+        [HttpPost]
+        public ActionResult Details(int? quantity, int? id)
+        {
+            if (Session["account_id"] == null)
+                return RedirectToAction("Login", "Accounts");
+
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            book book = db.books.Include(b => b.author).Include(b => b.category).FirstOrDefault(b => b.book_id == id);
+            if (book == null)
+            {
+                return HttpNotFound();
+            }
+
+            // Lấy danh sách sách cùng thể loại
+            var relatedBooks = db.books
+                                 .Where(b => b.category_id == book.category_id && b.book_id != id)
+                                 .Take(5) // Lấy 5 sách cùng thể loại
+                                 .ToList();
+
+            // Tạo ViewModel để truyền dữ liệu cho View
+            var viewModel = new BookDetailsViewModel
+            {
+                Book = book,
+                RelatedBooks = relatedBooks
+            };
+
+            ViewBag.Category = db.categories;
+
+            int accountId = (int) Session["account_id"];
+            int cartId = db.carts.Where(c => c.account_id == (int)accountId).First().cart_id;
+
+            cart_book cart_Book = new cart_book();
+            cart_Book.card_id = cartId;
+            cart_Book.book_id = (int)id;
+            cart_Book.quantity = quantity;
+            cart_Book.total_amount = quantity * book.price;
+
+            db.cart_book.Add(cart_Book);
+            if (quantity > book.remain)
+            {
+                ViewBag.Error = "Thêm vào giỏ hàng thất bại!";
+            }
+            else
+            {
+                ViewBag.Success = "Thêm vào giỏ hàng thành công!";
+            }
+            try
+            {
+                db.SaveChanges();
+            }
+            catch (Exception e)
+            {
+                ViewBag.Success = "";
+                ViewBag.Error = "Sản phẩm đã tồn tại trong giỏ hàng!";
+            }
 
             return View(viewModel);
         }

@@ -1,5 +1,6 @@
-namespace Book_Store.Models
+namespace BookStoreAdmin.Models
 {
+    using Book_Store.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
@@ -21,6 +22,25 @@ namespace Book_Store.Models
         public int? account_id { get; set; }
 
         public DateTime? created_at { get; set; }
+
+        public string address { get; set; }
+        public string phone_number { get; set; }
+        public decimal shipping_fee { get; set; }
+        public string status { get; set; }
+        [NotMapped]
+        public decimal total_bill
+        {
+            get
+            {
+                decimal monney = 0;
+                foreach (var item in order_book)
+                {
+                    monney += (decimal)item.total_amount;
+                }
+                return monney + shipping_fee;
+            }
+        }
+
 
         public virtual account account { get; set; }
 

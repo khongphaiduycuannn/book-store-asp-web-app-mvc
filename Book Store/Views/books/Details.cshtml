@@ -10,9 +10,10 @@
 
 <div>
     <div class="container mt-2">
+        @Html.BeginForm("Details", "Books", FormMethod.Post) {
         <div class="row">
             <div class="book-image col-5">
-                <img class="card-img-top product-image-detail w-75" src="@Url.Content("~/Content/Image/" + @Model.Book.image)" alt="Product Image" style="border-radius: 10px;"/>
+                <img class="card-img-top product-image-detail w-75" src="@Url.Content("~/Content/Image/" + @Model.Book.image)" alt="Product Image" style="border-radius: 10px;" />
             </div>
             <div class="book-info col-5">
                 <div class="book-name" style="font-weight: bold; font-size: 36px;">
@@ -51,11 +52,14 @@
                     </div>
                 </div>
             </div>
+            <p>@ViewBag.Error</p>
+            <p>@ViewBag.Success</p>
+            <input type="hidden" name ="book" value=@Model.Book.book_id />
             <div class="btns mt-3">
-                <button type="submit" class="btn btn-primary me-5" id="addToCartButton">Thêm</button> <!-- Added the class here -->
                 <button type="submit" class="btn btn-success ms-5" id="buyNowButton">Mua hàng</button>
             </div>
         </div>
+        }
     </div>
 </div>
 <div class="mt-3">
@@ -124,7 +128,7 @@
         margin-bottom: 15px;
     }
 
-/*        .related-img-top img {
+    /*        .related-img-top img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;

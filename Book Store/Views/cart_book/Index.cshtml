@@ -1,0 +1,62 @@
+﻿@model IEnumerable<Book_Store.Models.cart_book>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.book.name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.total_amount)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.book.name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.quantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.total_amount)
+            </td>
+            <td>
+                @Html.ActionLink("Xóa", "Delete", new { cardId=item.card_id , bookId = item.book_id});
+            </td>
+        </tr>
+    }
+</table>
+
+<p>@ViewBag.Error</p>
+<p>@ViewBag.Success</p>
+
+<p>Tổng tiền: @ViewBag.Total</p>
+
+@using (Html.BeginForm("Index", "Cart_Book", FormMethod.Post))
+{
+    <div>
+        <label>Địa chỉ</label>
+        <input type="text" name="address" />
+        <label>Số điện thoại</label>
+        <input type="number" name="phone_number" />
+        <button type="submit">Mua hàng</button>
+    </div>
+}
+
+<a href="/Orders/Index">Xem đơn hàng</a>

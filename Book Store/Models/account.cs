@@ -1,5 +1,6 @@
 namespace Book_Store.Models
 {
+    using BookStoreAdmin.Models;
     using System;
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;

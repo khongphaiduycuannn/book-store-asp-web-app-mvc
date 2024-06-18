@@ -51,7 +51,7 @@
                 </div>
             </a>
             <div class="btns">
-                <button type="submit" class="btn btn-primary" id="addToCartButton">Mua hàng</button>
+                <button type="submit" class="btn btn-primary" id="addToCartButton">@Html.ActionLink("Mua hàng", "Details", new { id = item.book_id })</button>
             </div>
         </div>
         }
