@@ -30,23 +30,23 @@ namespace BookStoreAdmin.Controllers
             if (topWell.HasValue && topWell > 0)
             {
                 string sqlQuery = @"
-                    select top (@TopCount) WITH TIES * from book order by sold Desc                    
+                    select top (@TopCount) WITH TIES * from book order by sold Desc, book_id Asc
                  ";
 
 
                 // Thực hiện truy vấn SQL với tham số top.Value
-                books = db.Database.SqlQuery<book>(sqlQuery,  new SqlParameter("TopCount", topWell.Value)).ToList().AsQueryable().OrderBy(b => b.book_id);
+                books = db.Database.SqlQuery<book>(sqlQuery,  new SqlParameter("TopCount", topWell.Value)).ToList().AsQueryable();
 
             }
             else if(topNotWell.HasValue && topNotWell > 0)
             {
                 string sqlQuery = @"
-                    select top (@TopCount) WITH TIES * from book order by sold ASC                    
+                    select top (@TopCount) WITH TIES * from book order by sold ASC, book_id Asc        
                  ";
 
 
                 // Thực hiện truy vấn SQL với tham số top.Value
-                books = db.Database.SqlQuery<book>(sqlQuery, new SqlParameter("TopCount", topNotWell.Value)).ToList().AsQueryable().OrderBy(b => b.book_id);
+                books = db.Database.SqlQuery<book>(sqlQuery, new SqlParameter("TopCount", topNotWell.Value)).ToList().AsQueryable();
             } else
             {
                 books = db.books.Include(b => b.author).Include(b => b.category)
